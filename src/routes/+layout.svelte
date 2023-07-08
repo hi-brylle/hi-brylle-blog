@@ -11,6 +11,48 @@
     <nav>
         <a href="/about-this-blog">What's this blog for?</a>
         <a href="/about-me">About me</a>
+        <a href="/about-this-blog">What's this blog for?</a>
+        <a href="/about-me">About me</a>
+        <a href="/about-this-blog">What's this blog for?</a>
+        <a href="/about-me">About me</a>
+        <a href="/about-this-blog">What's this blog for?</a>
+        <a href="/about-me">About me</a>
+        <a href="/about-this-blog">What's this blog for?</a>
+        <a href="/about-me">About me</a>
+        <a href="/about-this-blog">What's this blog for?</a>
+        <a href="/about-me">About me</a>
+        <a href="/about-this-blog">What's this blog for?</a>
+        <a href="/about-me">About me</a>
+        <a href="/about-this-blog">What's this blog for?</a>
+        <a href="/about-me">About me</a>
+        <a href="/about-this-blog">What's this blog for?</a>
+        <a href="/about-me">About me</a>
+        <a href="/about-this-blog">What's this blog for?</a>
+        <a href="/about-me">About me</a>
+        <a href="/about-this-blog">What's this blog for?</a>
+        <a href="/about-me">About me</a>
+        <a href="/about-this-blog">What's this blog for?</a>
+        <a href="/about-me">About me</a>
+        <a href="/about-this-blog">What's this blog for?</a>
+        <a href="/about-me">About me</a>
+        <a href="/about-this-blog">What's this blog for?</a>
+        <a href="/about-me">About me</a>
+        <a href="/about-this-blog">What's this blog for?</a>
+        <a href="/about-me">About me</a>
+        <a href="/about-this-blog">What's this blog for?</a>
+        <a href="/about-me">About me</a>
+        <a href="/about-this-blog">What's this blog for?</a>
+        <a href="/about-me">About me</a>
+        <a href="/about-this-blog">What's this blog for?</a>
+        <a href="/about-me">About me</a>
+        <a href="/about-this-blog">What's this blog for?</a>
+        <a href="/about-me">About me</a>
+        <a href="/about-this-blog">What's this blog for?</a>
+        <a href="/about-me">About me</a>
+        <a href="/about-this-blog">What's this blog for?</a>
+        <a href="/about-me">About me</a>
+        <a href="/about-this-blog">What's this blog for?</a>
+        <a href="/about-me">About me</a>
     </nav>
     <main>
         <slot></slot>
@@ -20,13 +62,11 @@
 <style>
     div {
         display: flex;
-        flex-direction: row;
-        width: 100%;
-        height: 100%;
     }
 
     nav {
         position: fixed;
+        float: left;
         left: 0;
         top: 0;
         bottom: 0;
@@ -35,6 +75,11 @@
         overflow-y: auto;
         display: flex;
         flex-direction: column;
+        margin: 0;
+    }
+
+    a {
+        overflow-wrap: normal;
     }
 
     main {
@@ -42,9 +87,11 @@
         right: 0;
         top: 0;
         bottom: 0;
+        float: right;
         width: 75%;
         display: block;
         background-color: aquamarine;
         overflow-y: auto;
+        margin: 0 0 0 25%;
     }
 </style>
