@@ -9,7 +9,7 @@
 
 <div>
     <nav>
-        <a href="/about-this-blog">What's this</a>
+        <a href="/about-this-blog">What's this blog for?</a>
         <a href="/about-me">About me</a>
     </nav>
     <main>
