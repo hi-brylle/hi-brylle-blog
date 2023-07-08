@@ -1,48 +1,16 @@
+<script lang="ts">
+    import { goto } from "$app/navigation";
+    import { onMount } from "svelte";
+
+    onMount(() => {
+        goto("/about-this-blog")
+    })
+</script>
+
 <div>
     <nav>
-        <ul>
-            <li>Coffee</li>
-            <li>Tea</li>
-            <li>Milk</li>
-            <li>Coffee</li>
-            <li>Tea</li>
-            <li>Milk</li>
-            <li>Coffee</li>
-            <li>Tea</li>
-            <li>Milk</li>
-            <li>Coffee</li>
-            <li>Tea</li>
-            <li>Milk</li>
-            <li>Coffee</li>
-            <li>Tea</li>
-            <li>Milk</li>
-            <li>Coffee</li>
-            <li>Tea</li>
-            <li>Milk</li>
-            <li>Coffee</li>
-            <li>Tea</li>
-            <li>Milk</li>
-            <li>Coffee</li>
-            <li>Tea</li>
-            <li>Milk</li>
-            <li>Coffee</li>
-            <li>Tea</li>
-            <li>Milk</li>
-            <li>Coffee</li>
-            <li>Tea</li>
-            <li>Coffee</li>
-            <li>Tea</li>
-            <li>Milk</li>
-            <li>Coffee</li>
-            <li>Tea</li>
-            <li>Milk</li>
-            <li>Coffee</li>
-            <li>Tea</li>
-            <li>Milk</li>
-            <li>Coffee</li>
-            <li>Tea</li>
-            <li>Milk</li>
-        </ul>
+        <a href="/about-this-blog">What's this</a>
+        <a href="/about-me">About me</a>
     </nav>
     <main>
         <slot></slot>
@@ -65,7 +33,8 @@
         background-color: aqua;
         width: 25%;
         overflow-y: auto;
-        display: block;
+        display: flex;
+        flex-direction: column;
     }
 
     main {
