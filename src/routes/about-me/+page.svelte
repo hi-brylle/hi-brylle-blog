@@ -30,6 +30,7 @@
 <style>
     main {
         padding: 50px 100px 50px 100px;
+        color: #CED4E3;
     }
 
     p {

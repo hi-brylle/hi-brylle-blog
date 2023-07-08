@@ -10,7 +10,7 @@
 <div>
     <nav>
         <aside>
-            <a href="/about-this-blog">What's this blog for?</a>
+            <a href="/about-this-blog">What this blog is for</a>
             <a href="/about-me">About me</a>
         </aside>
     </nav>
@@ -46,11 +46,11 @@
         font-weight: bold;
         overflow-wrap: normal;
         margin: 8px 0px 8px 0px;
-        color: black;
+        color: #CED4E3;
     }
 
     a:hover {
-        color: white;
+        color: black;
     }
 
     main {
