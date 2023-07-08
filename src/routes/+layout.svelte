@@ -29,7 +29,7 @@
         left: 0;
         top: 0;
         bottom: 0;
-        background-color: aqua;
+        background-color: #3D625B;
         width: 25%;
         overflow-y: auto;
         margin: 0;
@@ -46,10 +46,11 @@
         font-weight: bold;
         overflow-wrap: normal;
         margin: 8px 0px 8px 0px;
+        color: black;
     }
 
     a:hover {
-        color: red;
+        color: white;
     }
 
     main {
@@ -59,7 +60,7 @@
         bottom: 0;
         width: 75%;
         display: block;
-        background-color: aquamarine;
+        background-color: #2A423E;
         overflow-y: auto;
         margin: 0 0 0 25%;
     }
