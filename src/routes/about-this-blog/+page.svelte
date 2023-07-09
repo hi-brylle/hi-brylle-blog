@@ -7,7 +7,7 @@
         This blog contains my thoughts on various things.
         These things include functional programming, software architecture, and compilers.
         Those are the categories I want to be in this blog, but I'd probably
-        fill it more with silly web applications, new interests and associated learning journeys,
+        fill it more with book reviews, silly web applications, new interests and associated learning journeys,
         essays for and about a lost love, and life updates nobody cares about.
     </p>
 </main>
