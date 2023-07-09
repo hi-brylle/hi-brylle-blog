@@ -2,6 +2,11 @@
     import { goto } from "$app/navigation";
     import { onMount } from "svelte";
 
+    const links = [
+        {url: "/about-this-blog", title: "What this blog is for"},
+        {url: "/about-me", title: "About me"},
+    ]
+
     onMount(() => {
         goto("/about-this-blog")
     })
@@ -10,8 +15,9 @@
 <div>
     <nav>
         <aside>
-            <a href="/about-this-blog">What this blog is for</a>
-            <a href="/about-me">About me</a>
+            {#each links as link}
+                <a href={link.url}>{link.title}</a>
+            {/each}
         </aside>
     </nav>
     <main>
@@ -47,6 +53,7 @@
         overflow-wrap: normal;
         margin: 8px 0px 8px 0px;
         color: #CED4E3;
+        /* color: var(--text-color); */
     }
 
     a:hover {
