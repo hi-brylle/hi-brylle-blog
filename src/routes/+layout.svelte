@@ -2,10 +2,17 @@
     import { goto } from "$app/navigation";
     import { onMount } from "svelte";
 
-    const links = [
-        {url: "/about-this-blog", title: "What this blog is for"},
-        {url: "/about-me", title: "About me"},
+    let links = [
+        {url: "/about-this-blog", title: "What this blog is for", selected: true},
+        {url: "/about-me", title: "About me", selected: false},
     ]
+
+    const on_link_clicked = (url: string) => {
+        links.forEach((link) => {
+            link.selected = url == link.url ? true : false
+        })
+        links = links
+    }
 
     onMount(() => {
         goto("/about-this-blog")
@@ -16,7 +23,12 @@
     <nav>
         <aside>
             {#each links as link}
-                <a href={link.url}>{link.title}</a>
+                <a
+                    href={link.url}
+                    on:click={() => { on_link_clicked(link.url) }}
+                    style="--text-color: { link.selected ? "black" : "#CED4E3" }">
+                    {link.title}
+                </a>
             {/each}
         </aside>
     </nav>
@@ -52,8 +64,8 @@
         font-weight: bold;
         overflow-wrap: normal;
         margin: 8px 0px 8px 0px;
-        color: #CED4E3;
-        /* color: var(--text-color); */
+        /* color: #CED4E3; */
+        color: var(--text-color);
     }
 
     a:hover {
