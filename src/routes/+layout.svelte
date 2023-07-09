@@ -64,7 +64,6 @@
         font-weight: bold;
         overflow-wrap: normal;
         margin: 8px 0px 8px 0px;
-        /* color: #CED4E3; */
         color: var(--text-color);
     }
 
