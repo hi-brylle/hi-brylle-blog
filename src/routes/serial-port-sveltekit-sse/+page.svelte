@@ -157,6 +157,6 @@
     }
 
     a {
-        color: maroon
+        color: #CED4E3
     }
 </style>
