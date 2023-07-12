@@ -27,7 +27,7 @@
                 <a
                     href={link.url}
                     on:click={() => { on_link_clicked(link.url) }}
-                    style="--text-color: { link.selected ? "black" : "#CED4E3" }">
+                    style="--text-color: { link.selected ? "#CED4E3" : "black" }">
                     {link.title}
                 </a>
             {/each}
@@ -69,7 +69,7 @@
     }
 
     a:hover {
-        color: black;
+        color: #CED4E3;
     }
 
     main {
