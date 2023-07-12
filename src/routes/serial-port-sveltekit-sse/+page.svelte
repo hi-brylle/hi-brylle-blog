@@ -16,7 +16,8 @@
         to use Node.js as the runtime for the backend for its event-loop-based asynchronicity
         and Svelte and SvelteKit for frontend and meta-framework, respectively. The use of the SerialPort library
         is for abstracting away the details of connecting to serial ports, in our case, ports connected to 
-        our Arduino microcontrollers.
+        our Arduino microcontrollers. For simplicity, this fullstack setup will have its Node backend be ran locally on a 
+        Raspberry Pi that is connected to a touch-screen display.
     </p>
 
     <h2>
@@ -55,13 +56,91 @@
         for HTTP Request-Response. As convention (but not required), standalone endpoints can be contained in a <code>src/routes/api</code> directory.
     </p>
 
+    <h2>
+        Objective
+    </h2>
+
+    <p>
+        I want to be able to push Arduino readings to the UI, in a sort of real-time data monitoring screen in the app.
+        The SerialPort library handles the opening of the relevant port, the parsing of the bytestream, and the calling of a
+        callback that delegates what to do with the data. The other ingredient here are Server-Sent Events.
+        SSEs reside in a GET endpoint and allow servers to push data to the frontend without the frontend periodically asking for data 
+        via normal HTTP Request-Response. A crucial technical detail to note here is that SSEs in SvelteKit are implemented using 
+        <code>ReadableStream</code>.
+    </p>
+
+    <p>
+        The challenge here is that the port cannot be simply opened (and closed) in a standalone <code>/src/route/api.../+server.ts</code> endpoint
+        inside <code>ReadableStream</code> code. The port has other responsibilities, such as saving the readings to a local database and
+        sending select readings to a different backend in our project's system. This port code then has to live in its own module.
+    </p>
+
+    <h2>Solution</h2>
+
+    <p>
+        Originally, this functionality was implemented using WebSockets, but the WebSocket setup in SvelteKit is
+        <a href="https://github.com/sveltejs/kit/issues/1491" target="_blank">hacky</a>, and it also felt overkill
+        as the client didn't really need duplex communications with the backend.
+    </p>
+
+    <p>
+        The solution became glaringly obvious once I revisited the ancient port code I wrote months ago.
+        SerialPort ports are essentially Node <code>EventEmitter</code> and <code>Stream</code> under the hood.
+        The solution then is to write the Arduino readings into a <code>Stream</code> and pass this <code>Stream</code>
+        object to the SSE GET endpoint.
+    </p>
+
+    <p>
+        This blog entry documents an example of how the relevant pieces of the solution can fit given the tech stack and constraints.
+        The rest of this entry shows code samples. A note on notation: I use <code>...</code> to mean that there exist intermediate pieces
+        of code in between the code that I actually show here.
+    </p>
+
     <h2>The SerialPort library</h2>
 
     <Gist
         gist_url="https://gist.github.com/hi-brylle/920577f457ab44bf49cef4a8c248c236"
-        height={800}
-        />
+        height={600}
+    />
 
+    <p>
+        The <code>port</code> object abstracts the connection to the port connected to a microcontroller.
+        The <code>parser</code> object abstracts the parsing of the bytestream read by the <code>port</code> object.
+        The convention I and our IoT engineer agreed upon here is to use two newlines per data reading entry, hence the usage
+        of something called the <code>ReadlineParser</code>. The crucial solution piece here is the <code>stream</code> object. 
+        It's a <code>PassThrough</code> stream, which means anything written to it, when read, stays the same.
+    </p>
+
+    <h2>
+        Server-Sent Event endpoint
+    </h2>
+
+    <Gist
+        gist_url="https://gist.github.com/hi-brylle/77211881296559b79287842b4f855453"
+        height={580}
+    />
+
+    <p>
+        This is how standalone SSE endpoints are written in SvelteKit. It is a GET verb that returns a <code>Response</code> that must contain
+        some <code>ReadableStream</code> with content type set to <code>text/event-stream</code>. Lines 9 to 12 contain the crucial solution piece, 
+        which is the <code>stream</code> object exported from the port code. This is the part where what's written into it shall be read to be eventually sent to the client,
+        using the <code>.on("data", ...)</code> handler. It is mandatory in SSEs for the payload to be prefixed by
+        <code>data:</code> and be suffixed by two newlines.
+    </p>
+
+    <h2>The client-side</h2>
+
+    <Gist
+        gist_url="https://gist.github.com/hi-brylle/161f05b58581688a8930f47fa5e16a52"
+        height={880}
+    />
+
+    <p>
+        An <code>EventSource</code> object must be constructed with the URL path argument set to the path of the SSE GET endpoint.
+        This code resides in some <code>+page.svelte</code> file which means it shows UI. Whenever the user navigates into this page,
+        the Arduino data ends up here. When they leave, the resources are cleaned up. The <code>onMount()</code> code handles all these cleanup
+        but its explanation is out of the scope of this entry so just look up its <a href="https://svelte.dev/docs/svelte#onmount" target="_blank">documentation</a>.
+    </p>
     
 
 </main>
@@ -75,5 +154,9 @@
     p {
         text-align: justify;
         text-justify: inter-word;
+    }
+
+    a {
+        color: maroon
     }
 </style>
