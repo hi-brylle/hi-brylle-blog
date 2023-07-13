@@ -1,11 +1,15 @@
 <script>
     import Gist from "../../lib/components/Gist.svelte";
+    const date_written = "13 July 2023"
+    const read_time_est = "5-minute read"
 </script>
 
 <main>
     <h1>
         Architecting server-side push for Node SerialPort in SvelteKit using Server-Sent Events
     </h1>
+
+    <p>{date_written} &bull; {read_time_est}</p>
 
     <p>
         At work, I am currently working on creating some control panel application for our IoT hardware.
