@@ -139,7 +139,16 @@
         but its explanation is out of the scope of this entry so just look up its <a href="https://svelte.dev/docs/svelte#onmount" target="_blank">documentation</a>.
     </p>
     
-    <h5>References:</h5>
+    <h4>References:</h4>
+
+    <ul>
+        <li><a href="https://serialport.io" target="_blank">Node SerialPort</a></li>
+        <li><a href="https://nodejs.org/api/stream.html" target="_blank">Node Stream Docs</a></li>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events" target="_blank">Server-Sent Events</a></li>
+        <li><a href="https://svelte.dev/docs/introduction" target="_blank">Svelte Docs</a></li>
+        <li><a href="https://kit.svelte.dev/docs/introduction" target="_blank">SvelteKit Docs</a></li>
+    </ul>
+
 
 </main>
 
@@ -156,5 +165,9 @@
 
     a {
         color: #CED4E3
+    }
+
+    a:hover {
+        color: black;
     }
 </style>
