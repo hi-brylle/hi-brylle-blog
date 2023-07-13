@@ -1,9 +1,6 @@
 <script>
     import Gist from "../../lib/components/Gist.svelte";
-
-    
 </script>
-
 
 <main>
     <h1>
@@ -106,9 +103,9 @@
     <p>
         The <code>port</code> object abstracts the connection to the port connected to a microcontroller.
         The <code>parser</code> object abstracts the parsing of the bytestream read by the <code>port</code> object.
-        The convention I and our IoT engineer agreed upon here is to use two newlines per data reading entry, hence the usage
-        of something called the <code>ReadlineParser</code>. The crucial solution piece here is the <code>stream</code> object. 
-        It's a <code>PassThrough</code> stream, which means anything written to it, when read, stays the same.
+        The convention I and our IoT engineer agreed upon here is to use a carriage return and a newline per data reading entry,
+        hence the usage of something called the <code>ReadlineParser</code>. The crucial solution piece here is the <code>stream</code> object. 
+        It's a <code>PassThrough</code> stream that simply passes data written into it to its output with no transformations.
     </p>
 
     <h2>
@@ -124,8 +121,8 @@
         This is how standalone SSE endpoints are written in SvelteKit. It is a GET verb that returns a <code>Response</code> that must contain
         some <code>ReadableStream</code> with content type set to <code>text/event-stream</code>. Lines 9 to 12 contain the crucial solution piece, 
         which is the <code>stream</code> object exported from the port code. This is the part where what's written into it shall be read to be eventually sent to the client,
-        using the <code>.on("data", ...)</code> handler. It is mandatory in SSEs for the payload to be prefixed by
-        <code>data:</code> and be suffixed by two newlines.
+        using the <code>.on("data", ...)</code> handler. Line 11 shows that it is mandatory in SSEs for the payload to be prefixed by
+        <code>data:</code> and to be suffixed by two newlines.
     </p>
 
     <h2>The client-side</h2>
@@ -142,6 +139,7 @@
         but its explanation is out of the scope of this entry so just look up its <a href="https://svelte.dev/docs/svelte#onmount" target="_blank">documentation</a>.
     </p>
     
+    <h5>References:</h5>
 
 </main>
 
