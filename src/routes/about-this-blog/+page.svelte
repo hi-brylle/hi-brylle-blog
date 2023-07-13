@@ -8,7 +8,7 @@
         These things include functional programming, software architecture, and compilers.
         Those are the categories I want to be in this blog, but I'd probably
         fill it more with game or book reviews, silly web applications, new interests and associated learning journeys,
-        essays for and about a lost love, and life updates nobody cares about.
+        and life updates nobody cares about.
     </p>
 </main>
 
