@@ -1,5 +1,5 @@
 <script>
-    import Gist from "../../lib/components/Gist.svelte";
+    import Gist from "$lib/components/Gist.svelte";
     const date_written = "13 July 2023"
     const read_time_est = "5-minute read"
 </script>
