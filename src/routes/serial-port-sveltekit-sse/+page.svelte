@@ -25,6 +25,8 @@
         A Svelte and SvelteKit crash course
     </h2>
 
+    <p>Feel free to skip to the next section if you are already familiar with Svelte and SvelteKit's project structure.</p>
+
     <p>
         Svelte is a frontend framework for writing declarative and reactive UI.
         Sveltekit is a meta-framework built on top of Svelte for developing web applications.
