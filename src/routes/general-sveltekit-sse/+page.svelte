@@ -1,7 +1,7 @@
 <script>
     import Gist from "$lib/components/Gist.svelte";
     const date_written = "27 July 2023"
-    const read_time_est = "5-minute read"
+    const read_time_est = "X-minute read"
 </script>
 
 <main>
