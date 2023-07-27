@@ -16,10 +16,6 @@
         })
         links = links
     }
-
-    onMount(() => {
-        goto("/about-this-blog")
-    })
 </script>
 
 <div>

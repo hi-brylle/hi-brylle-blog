@@ -13,7 +13,7 @@
 
     <p>
         The usage of a <code>PassThrough</code> Stream is the key to tying together
-        the pieces of the server-side push solution in this blog <a href="/serial-port-sveltekit-sse">entry</a>.
+        the pieces of the server-side push solution in this blog <a href="/serial-port-sveltekit-sse" target="_blank">entry</a>.
         This still feels constrained by the fact that SSEs need to reside in a GET endpoint. A question logically follows:
         is it possible for disparate parts of the server to fire off messages intended for dispatch by
         the client side without the client sending a message first, i.e, a triggered server-side push from anywhere?
