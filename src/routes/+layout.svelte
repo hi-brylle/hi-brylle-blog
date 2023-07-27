@@ -5,7 +5,8 @@
     let links = [
         {url: "/about-this-blog", title: "What this blog is for", selected: true},
         {url: "/about-me", title: "About me", selected: false},
-        {url: "/serial-port-sveltekit-sse", title: "Architecting server-side push for Node SerialPort in SvelteKit using Server-Sent Events"}
+        {url: "/serial-port-sveltekit-sse", title: "Architecting server-side push for Node SerialPort in SvelteKit using Server-Sent Events"},
+        {url: "/general-sveltekit-sse", title: "Generalizing server-side push in SvelteKit using Server-Sent Events"}
     ]
 
     const on_link_clicked = (url: string) => {
