@@ -1,5 +1,6 @@
 <script lang="ts">
     import { goto } from "$app/navigation";
+    import { page } from "$app/stores";
     import { onMount } from "svelte";
 
     let links = [
@@ -9,9 +10,9 @@
         {url: "/general-sveltekit-sse", title: "Generalizing server-side push in SvelteKit using Server-Sent Events"}
     ]
 
-    const on_link_clicked = (url: string) => {
+    $: {
         links.forEach((link) => {
-            link.selected = url == link.url ? true : false
+            link.selected = $page.url.pathname == link.url ? true : false
         })
         links = links
     }
@@ -27,7 +28,6 @@
             {#each links as link}
                 <a
                     href={link.url}
-                    on:click={() => { on_link_clicked(link.url) }}
                     style="--text-color: { link.selected ? "#CED4E3" : "black" }">
                     {link.title}
                 </a>
