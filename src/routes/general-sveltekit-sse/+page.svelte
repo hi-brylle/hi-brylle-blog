@@ -1,10 +1,68 @@
-Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores quaerat neque ut. Fuga sapiente quo accusantium. Dolorum voluptate recusandae illo voluptatum, aliquid ipsa quibusdam optio explicabo nihil aut ipsam illum!
-Esse totam dolor ducimus animi cum optio, cumque corporis molestiae odio, eveniet sequi at iusto labore quo. Illo enim temporibus labore, saepe nulla dolores illum deserunt minus. Tempore, ratione consequuntur!
-Fugiat perferendis et error, aliquid dignissimos, molestias iure consequuntur nam ea cumque iusto nobis unde ex doloribus maiores, tenetur quam similique culpa saepe optio? Beatae quas reprehenderit veritatis at odit?
-Vitae ipsam, sequi nostrum laboriosam error explicabo ipsa incidunt voluptatum aliquid. Harum iusto perspiciatis possimus ut pariatur doloremque tempore velit? Error asperiores itaque adipisci iusto, eligendi libero. Quaerat, numquam voluptate.
-Fugiat ratione voluptate error, neque delectus ex eos repellendus repudiandae aperiam accusamus expedita mollitia, rerum eum eveniet nobis iusto beatae ad commodi at officiis nulla adipisci porro vel. Sed, libero.
-Ex quisquam deserunt nesciunt aliquam et dicta officiis dolore consequuntur? Alias, reiciendis quidem? Sed iste soluta dolor esse, explicabo sunt! Necessitatibus qui nihil praesentium animi nulla. Animi maxime sint eius.
-Dolore, tempore fugiat veniam iusto hic laborum dicta dolores nihil distinctio dolorum, ipsa dignissimos rem eaque voluptatum aliquam sed ipsum et nemo molestiae, qui neque perspiciatis. Facilis omnis ea quod.
-Alias quae accusamus aperiam quo nam deleniti fugit officiis dolores quis, esse labore perferendis quia eligendi dolorum blanditiis dicta pariatur expedita assumenda reprehenderit porro laborum? Delectus, animi eum! Modi, architecto.
-Laboriosam esse, necessitatibus, dolore cumque ratione neque modi atque soluta, fugit natus provident. Ad odit consequatur recusandae vel tenetur eveniet repellat modi iusto? Optio, necessitatibus! Ullam quas dolorem praesentium suscipit.
-Laboriosam nostrum illo amet at quisquam, maxime totam, architecto sit cum tempora voluptatem. Cum voluptate fuga nam odio doloribus, quidem consectetur vero dolore totam unde tempore architecto nesciunt sed reprehenderit?
+<script>
+    import Gist from "$lib/components/Gist.svelte";
+    const date_written = "27 July 2023"
+    const read_time_est = "5-minute read"
+</script>
+
+<main>
+    <h1>
+        Generalizing server-side push in SvelteKit using Server-Sent Events
+    </h1>
+
+    <p>{date_written} &bull; {read_time_est}</p>
+
+    <p>
+        The usage of a <code>PassThrough</code> Stream is the key to tying together
+        the pieces of the server-side push solution in this blog <a href="/serial-port-sveltekit-sse">entry</a>.
+        This still feels constrained by the fact that SSEs need to reside in a GET endpoint. A question logically follows:
+        is it possible for disparate parts of the server to fire off messages intended for dispatch by
+        the client side without the client sending a message first, i.e, a triggered server-side push from anywhere?
+        I have implemented a solution in SvelteKit and again, the key here is the <code>PassThrough</code> Stream.
+    </p>
+
+    <h2>
+        Solution
+    </h2>
+
+    <p>
+        The server-side solution is obvious. Instantiate an exportable <code>PassThrough</code> Stream object somewhere
+        and whenever there's some domain action that requires a server-side push, simply import this <code>PassThrough</code> object 
+        to the call site and write data (the message) into it. A better design would be to encapsulate this Stream object in some class
+        and write methods for writing into it, like in the following snippet.
+    </p>
+
+    <p>
+        The SSE GET endpoint is simple. Just import the <code>PassThrough</code> Stream object here and attach an 
+        <code>on.("data", ...)</code> handler for the <code>controller</code> to enqueue.
+        Don't forget the <code>data:</code> prefix and the two newlines.
+    </p>
+
+    <p>
+        The client-side solution asks if it's possible to listen to the SSE endpoint and
+        dispatch the received messages regardless of the user's current location in the website.
+        I discovered that SvelteKit's <code>hooks.client</code> file is capable of doing this.
+        This is where an <code>EventSource</code> would be constructed with the URL of the SSE GET endpoint
+        as argument.
+    </p>
+
+</main>
+
+<style>
+    main {
+        padding: 50px 100px 50px 100px;
+        color: #CED4E3;
+    }
+
+    p {
+        text-align: justify;
+        text-justify: inter-word;
+    }
+
+    a {
+        color: #CED4E3
+    }
+
+    a:hover {
+        color: black;
+    }
+</style>
