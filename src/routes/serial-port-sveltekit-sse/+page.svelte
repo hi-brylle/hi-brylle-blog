@@ -78,7 +78,7 @@
         sending select readings to a different backend in our project's system. This port code then has to live in its own module.
     </p>
 
-    <h2>Solution</h2>
+    <h2 id="solution">Solution</h2>
 
     <p>
         Originally, this functionality was implemented using WebSockets, but the WebSocket setup in SvelteKit is
