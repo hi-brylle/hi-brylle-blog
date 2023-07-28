@@ -1,20 +1,20 @@
 <script>
     import Gist from "$lib/components/Gist.svelte";
-    const date_written = "27 July 2023"
+    const date_written = "28 July 2023"
     const read_time_est = "4-minute read"
 </script>
 
 <main>
     <h1>
-        Generalizing server-side push in SvelteKit using Server-Sent Events
+        App-wide server-side push in SvelteKit using Server-Sent Events
     </h1>
 
     <p>{date_written} &bull; {read_time_est}</p>
 
     <p>
-        The usage of a <code>PassThrough</code> Stream is the key to tying together
+        The usage of a Node.js <code>PassThrough</code> Stream is the key to tying together
         the pieces of the server-side push solution in this blog <a href="/serial-port-sveltekit-sse#solution" target="_blank">entry</a>.
-        This still feels constrained by the fact that SSEs need to reside in a GET endpoint. A question logically follows:
+        This, however, still feels constrained by the fact that SSEs need to reside in a GET endpoint. A question logically follows:
         is it possible for disparate parts of the server to fire off messages intended for dispatch by
         the client side without the client sending a message first, i.e, trigger server-side pushes from anywhere?
         I have implemented a solution in SvelteKit and again, the key here is the <code>PassThrough</code> Stream.
@@ -63,14 +63,18 @@
     <p>
         The <code>hooks.client</code> file  is a special file in SvelteKit whose code
         will run when the app starts up, specifically client-side code, so you can take advantage of
-        Svelte's reactivity features here. To prevent bloating the <code>hooks.client</code> file,
-        you can import a function instead that handles all the different messages you receive
-        from the server-side code. 
+        Svelte's reactivity features here.
     </p>
 
     <h2>
         Improvements
     </h2>
+
+    <p>
+        To prevent bloating the <code>hooks.client</code> file,
+        you can import a function here instead that handles all the different messages you receive
+        from the SSE endpoint.
+    </p>
 
     <p>
         The <code>message_stream</code> object is mutable, so instead of exposing it and then attaching 
@@ -81,10 +85,12 @@
 
     <p>
         Unlike the <a href="/serial-port-sveltekit-sse#objective" target="_blank">entry</a> last time where the SSE 
-        is busy sending data on short intervals, a more general use of SSEs like this may lead to the SSE pushing 
-        messages sparsely over time and may result to the disconnection of the client to the SSE endpoint.
-        Prevent this by sending 'keep-alive' messages. This can be any message or for brevity, can simply be 
-        ":/n/n". Use <code>setInterval()</code> for this with interval set to as small as 15 seconds.
+        is busy sending data on short intervals, a more general, app-wide use of SSEs like this may lead to the SSE pushing 
+        messages sparsely over time and may result to the disconnection of the client to the GET endpoint.
+        Prevent this by sending 'keep-alive' messages. This can simply be ":/n/n".
+        Use <code>setInterval()</code> for this with interval set to as small as 15 seconds.
+        This periodic code should live in SvelteKit's <code>hooks.server</code> file, the server-side 
+        equivalent of the <code>hooks.client</code> file.
     </p>
 
 </main>
