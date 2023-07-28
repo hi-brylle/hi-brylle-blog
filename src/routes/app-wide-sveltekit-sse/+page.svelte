@@ -61,9 +61,9 @@
     />
 
     <p>
-        The <code>hooks.client</code> file  is a special file in SvelteKit whose code
-        will run when the app starts up, specifically client-side code, so you can take advantage of
-        Svelte's reactivity features here.
+        The <code>hooks.client</code> file  is a special file in SvelteKit whose code,
+        specifically client-side code, will run when the app starts up,
+        so you can take advantage of Svelte's reactivity features here.
     </p>
 
     <h2>
@@ -86,7 +86,7 @@
     <p>
         Unlike the <a href="/serial-port-sveltekit-sse#objective" target="_blank">entry</a> last time where the SSE 
         is busy sending data on short intervals, a more general, app-wide use of SSEs like this may lead to the SSE pushing 
-        messages sparsely over time and may result to the disconnection of the client to the GET endpoint.
+        messages sparsely over time and may result to the disconnection of the client to the GET endpoint due to timeout.
         Prevent this by sending 'keep-alive' messages. This can simply be ":/n/n".
         Use <code>setInterval()</code> for this with interval set to as small as 15 seconds.
         This periodic code should live in SvelteKit's <code>hooks.server</code> file, the server-side 
