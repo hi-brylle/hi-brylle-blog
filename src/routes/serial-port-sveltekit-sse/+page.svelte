@@ -59,7 +59,7 @@
         for HTTP Request-Response. As convention (but not required), standalone endpoints can be contained in a <code>src/routes/api</code> directory.
     </p>
 
-    <h2>
+    <h2 id="objective">
         Objective
     </h2>
 
@@ -78,7 +78,9 @@
         sending select readings to a different backend in our project's system. This port code then has to live in its own module.
     </p>
 
-    <h2 id="solution">Solution</h2>
+    <h2 id="solution">
+        Solution
+    </h2>
 
     <p>
         Originally, this functionality was implemented using WebSockets, but the WebSocket setup in SvelteKit is
@@ -99,7 +101,9 @@
         of code in between the code that I actually show here.
     </p>
 
-    <h2>The SerialPort library</h2>
+    <h2>
+        The SerialPort library
+    </h2>
 
     <Gist
         gist_url="https://gist.github.com/hi-brylle/920577f457ab44bf49cef4a8c248c236"
@@ -131,7 +135,9 @@
         <code>data:</code> and to be suffixed by two newlines.
     </p>
 
-    <h2>The client-side</h2>
+    <h2>
+        The client-side
+    </h2>
 
     <Gist
         gist_url="https://gist.github.com/hi-brylle/161f05b58581688a8930f47fa5e16a52"
@@ -145,7 +151,9 @@
         but its explanation is out of the scope of this entry so just look up its <a href="https://svelte.dev/docs/svelte#onmount" target="_blank">documentation</a>.
     </p>
     
-    <h4>References:</h4>
+    <h4>
+        References:
+    </h4>
 
     <ul>
         <li><a href="https://serialport.io" target="_blank">Node SerialPort</a></li>
