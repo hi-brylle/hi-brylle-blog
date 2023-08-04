@@ -10,7 +10,7 @@
     </p>
 
     <p>
-        Link to my <a href="/resume.pdf">resume</a>.
+        Link to my <a href="/resume.pdf" target="_blank">resume</a>.
     </p>
 
     <p>
