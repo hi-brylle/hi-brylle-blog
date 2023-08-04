@@ -10,11 +10,12 @@
     </p>
 
     <p>
-        (E-mail and links to resume and github to come soon)
+        Link to <a href="/resume/resume.pdf" target="_blank">my resume</a>.
     </p>
 
-    <a href="/resume/resume.pdf" target="_blank">resume here</a>
-
+    <p>
+        (Link to github to come soon)
+    </p>
 </main>
 
 <style>
@@ -26,5 +27,13 @@
     p {
         text-align: justify;
         text-justify: inter-word;
+    }
+
+    a {
+        color: #CED4E3
+    }
+
+    a:hover {
+        color: black;
     }
 </style>
