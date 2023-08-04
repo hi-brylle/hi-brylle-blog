@@ -13,7 +13,7 @@
         (E-mail and links to resume and github to come soon)
     </p>
 
-    <a href="/resume/resume.pdf">resume here</a>
+    <a href="/resume/resume.pdf" target="_blank">resume here</a>
 
 </main>
 
