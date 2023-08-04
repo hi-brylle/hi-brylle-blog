@@ -10,10 +10,12 @@
     </p>
 
     <p>
-        (Links to my email and github to come soon)
+        Link to my <a href="/resume.pdf">resume</a>.
     </p>
 
-    <a href="/resume.pdf">resume</a>
+    <p>
+        (Links my github to come soon)
+    </p>
 </main>
 
 <style>
@@ -25,5 +27,13 @@
     p {
         text-align: justify;
         text-justify: inter-word;
+    }
+
+    a {
+        color: #CED4E3
+    }
+
+    a:hover {
+        color: black;
     }
 </style>
