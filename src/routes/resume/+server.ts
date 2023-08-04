@@ -2,7 +2,7 @@ import fs from 'fs'
 import type { RequestHandler } from "@sveltejs/kit"
 
 export const GET = (async ({ request }) => {
-    const pdf = fs.readFileSync("./downloads/resume.pdf")
+    const pdf = fs.readFileSync(process.cwd() +  "/downloads/resume.pdf")
     return new Response(pdf, {
         headers: {
             "Content-type" : "application/pdf",
