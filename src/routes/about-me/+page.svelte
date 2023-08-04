@@ -12,6 +12,8 @@
     <p>
         (Links to my email and github to come soon)
     </p>
+
+    <a href="/resume.pdf">resume</a>
 </main>
 
 <style>
