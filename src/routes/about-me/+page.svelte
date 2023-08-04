@@ -9,10 +9,6 @@
         domain-driven design, functional programming, compilers, lambda calculus, and type theory.
     </p>
 
-    <!-- <p>
-        Click <a href="/resume">here</a> to download my resume.
-    </p> -->
-
     <p>
         (Links to my email and github to come soon)
     </p>
@@ -27,13 +23,5 @@
     p {
         text-align: justify;
         text-justify: inter-word;
-    }
-
-    a {
-        color: #CED4E3
-    }
-
-    a:hover {
-        color: black;
     }
 </style>
