@@ -1,11 +1,14 @@
 import { sveltekit } from '@sveltejs/kit/vite';
-import { defineConfig } from 'vite';
+import { defineConfig, searchForWorkspaceRoot } from 'vite';
 
 export default defineConfig({
 	plugins: [sveltekit()],
 	server: {
 		fs: {
-			strict: false
+			allow: [
+				searchForWorkspaceRoot(process.cwd()),
+				"/resume/resume.pdf"
+			]
 		}
 	}
 });
