@@ -14,7 +14,7 @@
     </p>
 
     <p>
-        (Links my github to come soon)
+        (Link to my github to come soon)
     </p>
 </main>
 
