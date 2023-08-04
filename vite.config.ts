@@ -7,7 +7,7 @@ export default defineConfig({
 		fs: {
 			allow: [
 				searchForWorkspaceRoot(process.cwd()),
-				"/resume/resume.pdf"
+				"/downloads/resume.pdf"
 			]
 		}
 	}
