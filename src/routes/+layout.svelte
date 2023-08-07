@@ -1,19 +1,19 @@
 <script lang="ts">
     import { page } from "$app/stores";
-    import { links } from "$lib/link-store";
+    import { nav_links } from "$lib/link-store";
 
     $: {
-        $links.forEach((link) => {
+        $nav_links.forEach((link) => {
             link.selected = $page.url.pathname == link.url ? true : false
         })
-        $links = $links
+        $nav_links = $nav_links
     }
 </script>
 
 <div>
     <nav>
         <aside>
-            {#each $links as link}
+            {#each $nav_links as link}
                 <a
                     href={link.url}
                     style="--text-color: { link.selected ? "#CED4E3" : "black" }">

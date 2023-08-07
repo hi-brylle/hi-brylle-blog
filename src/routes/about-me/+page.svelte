@@ -1,8 +1,8 @@
 <script lang="ts">
     import { page } from "$app/stores";
-    import { links_derived } from "$lib/link-store";
+    import { links } from "$lib/link-store";
 
-    const title = $links_derived.get($page.url.pathname)
+    const title = $links.get($page.url.pathname)
 </script>
 
 <main>
