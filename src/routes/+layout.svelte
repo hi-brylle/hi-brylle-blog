@@ -1,25 +1,19 @@
 <script lang="ts">
     import { page } from "$app/stores";
-
-    let links = [
-        {url: "/about-this-blog", title: "What this blog is for", selected: false},
-        {url: "/about-me", title: "About me", selected: false},
-        {url: "/serial-port-sveltekit-sse", title: "Architecting server-side push for Node SerialPort in SvelteKit using Server-Sent Events", selected: false},
-        {url: "/app-wide-sveltekit-sse", title: "App-wide server-side push in SvelteKit using Server-Sent Events", selected: false},
-    ]
+    import { links } from "$lib/link-store";
 
     $: {
-        links.forEach((link) => {
+        $links.forEach((link) => {
             link.selected = $page.url.pathname == link.url ? true : false
         })
-        links = links
+        $links = $links
     }
 </script>
 
 <div>
     <nav>
         <aside>
-            {#each links as link}
+            {#each $links as link}
                 <a
                     href={link.url}
                     style="--text-color: { link.selected ? "#CED4E3" : "black" }">
