@@ -1,6 +1,13 @@
+<script lang="ts">
+    import { page } from "$app/stores";
+    import { links } from "$lib/link-store";
+
+    const title = $links.get($page.url.pathname)
+</script>
+
 <main>
     <h1>
-        What this blog is for
+        {title}
     </h1>
 
     <p>
