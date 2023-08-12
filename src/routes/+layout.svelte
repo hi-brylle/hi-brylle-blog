@@ -1,6 +1,10 @@
 <script lang="ts">
+    import { dev } from '$app/environment';
+    import { inject } from '@vercel/analytics';
     import { page } from "$app/stores";
     import { nav_links } from "$lib/link-store";
+
+    inject({ mode: dev ? 'development' : 'production' });
 
     $: {
         $nav_links.forEach((link) => {
