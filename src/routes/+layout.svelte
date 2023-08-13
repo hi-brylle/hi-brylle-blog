@@ -20,7 +20,7 @@
             {#each $nav_links as link}
                 <a
                     href={link.url}
-                    style="--text-color: { link.selected ? "#CED4E3" : "black" }">
+                    class:selected={link.selected}>
                     {link.title}
                 </a>
             {/each}
@@ -58,11 +58,15 @@
         font-weight: bold;
         overflow-wrap: normal;
         margin: 8px 0px 8px 0px;
-        color: var(--text-color);
+        color: black;
     }
 
     a:hover {
         color: #CED4E3;
+    }
+
+    .selected {
+        color: #CED4E3
     }
 
     main {
