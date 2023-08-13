@@ -9,7 +9,7 @@ export const nav_links = writable([
 
 export const links = derived(nav_links, (values: (typeof nav_links) extends Writable<infer T> ? T : never) => {    
     let map = new Map<string, string>()
-    values.map((value: (typeof values) extends (infer T)[] ? T : never) => {
+    values.map((value: typeof values[number]) => {
         map.set(value.url, value.title)
     })
     return map
