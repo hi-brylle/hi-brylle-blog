@@ -101,7 +101,7 @@
 
 <style>
     main {
-        padding: 50px 100px 50px 100px;
+        padding: 3.5em 7em 3.5em 7em;
         color: #CED4E3;
     }
 
