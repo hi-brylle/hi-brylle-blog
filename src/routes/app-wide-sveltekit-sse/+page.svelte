@@ -53,8 +53,8 @@
 
     <p>
         The client-side solution asks if it's possible to listen to the SSE endpoint and
-        <i>dispatch the received messages regardless of the user's current location in the website.</i>
-        I discovered that <b>SvelteKit's <code>hooks.client</code> file is capable of doing this.</b>
+        <em>dispatch the received messages regardless of the user's current location in the website.</em>
+        I discovered that <strong>SvelteKit's <code>hooks.client</code> file is capable of doing this.</strong>
         This is where an <code>EventSource</code> would be constructed with the URL of the SSE GET endpoint
         as argument.
     </p>

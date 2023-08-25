@@ -95,8 +95,8 @@
     <p>
         The solution became glaringly obvious once I revisited the ancient port code I wrote months ago.
         SerialPort ports are essentially Node <code>EventEmitter</code> and <code>Stream</code> under the hood.
-        <b>The solution then is to write the Arduino readings into a <code>Stream</code> and pass this <code>Stream</code>
-        object to the SSE GET endpoint.</b>
+        <strong>The solution then is to write the Arduino readings into a <code>Stream</code> and pass this <code>Stream</code>
+        object to the SSE GET endpoint.</strong>
     </p>
 
     <p>
