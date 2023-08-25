@@ -45,20 +45,22 @@
         width: 25%;
         overflow-y: auto;
         margin: 0;
+        
     }
 
     aside {
         display: flex;
         flex-direction: column;
-        margin: 8px 16px 8px 16px;
+        margin: 0.5em 1em;
     }
 
     a {
         text-decoration: none;
         font-weight: bold;
         overflow-wrap: normal;
-        margin: 8px 0px 8px 0px;
+        margin: 0.5em;
         color: black;
+        
     }
 
     a:hover {
