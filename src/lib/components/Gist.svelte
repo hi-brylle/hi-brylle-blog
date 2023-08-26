@@ -1,6 +1,6 @@
-<script>
-    export let gist_url = ""
-    export let height = 1000
+<script lang="ts">
+    export let gist_url: string
+    export let height: number
 </script>
 
 <iframe
