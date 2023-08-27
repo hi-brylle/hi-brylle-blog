@@ -121,11 +121,6 @@
     .material-symbols-outlined {
         color: white;
         padding: 0.5em;
-        font-variation-settings:
-            'FILL' 0,
-            'wght' 700,
-            'GRAD' 200,
-            'opsz' 48
     }
 
     .material-symbols-outlined:active {
