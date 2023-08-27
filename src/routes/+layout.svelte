@@ -25,6 +25,9 @@
         {/each}
     </nav>
     <main>
+        <span class="material-symbols-outlined">
+            menu
+        </span>
         <slot></slot>
     </main>
 </div>
@@ -74,4 +77,16 @@
         overflow-y: auto;
         margin: 0 0 0 25%;
     }
+
+    .material-symbols-outlined {
+        color: white;
+        border: solid red 1px;
+        padding: 0.5em;
+        font-variation-settings:
+            'FILL' 0,
+            'wght' 700,
+            'GRAD' 200,
+            'opsz' 48
+    }
+
 </style>

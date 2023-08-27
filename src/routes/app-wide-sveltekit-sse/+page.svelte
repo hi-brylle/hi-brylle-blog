@@ -104,7 +104,7 @@
         color: #CED4E3;
     }
     main {
-        padding: 3.5em 7em 3.5em 7em;
+        padding: 2em 6em 3em 6em;
     }
     @media screen and (max-width: 768px) {
         main {
