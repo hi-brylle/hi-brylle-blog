@@ -40,11 +40,13 @@
         {/each}
     </nav>
     <main style="--width:{main_width};">
-        <button on:click={toggle_navbar}>
-            <span class="material-symbols-outlined">
-                menu
-            </span>
-        </button>
+        <div class="topbar">
+            <button on:click={toggle_navbar}>
+                <span class="material-symbols-outlined">
+                    menu
+                </span>
+            </button>
+        </div>
 
         <slot></slot>
     </main>
@@ -94,6 +96,13 @@
         background-color: #2A423E;
         overflow-y: auto;
         margin: 0 0 0 25%;
+    }
+
+    .topbar {
+        position: sticky;
+        top: 0;
+        background-color: #2A423E;
+        width: 100%;
     }
 
     button {
