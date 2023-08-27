@@ -25,9 +25,12 @@
         {/each}
     </nav>
     <main>
-        <span class="material-symbols-outlined">
-            menu
-        </span>
+        <button>
+            <span class="material-symbols-outlined">
+                menu
+            </span>
+        </button>
+
         <slot></slot>
     </main>
 </div>
@@ -78,15 +81,29 @@
         margin: 0 0 0 25%;
     }
 
+    button {
+        border: 0;
+        background-color: #2A423E;
+    }
+
     .material-symbols-outlined {
         color: white;
-        border: solid red 1px;
         padding: 0.5em;
         font-variation-settings:
             'FILL' 0,
             'wght' 700,
             'GRAD' 200,
             'opsz' 48
+    }
+
+    .material-symbols-outlined:active {
+        color: black;
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+        .material-symbols-outlined:hover {
+            color: black;
+        }
     }
 
 </style>
