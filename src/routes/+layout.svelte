@@ -12,10 +12,25 @@
         })
         $nav_links = $nav_links
     }
+
+    let navbar_hidden = false
+    let nav_width = "25%"
+    let main_width = "75%"
+    const toggle_navbar = () => {
+        navbar_hidden = !navbar_hidden
+    }
+
+    $: if (navbar_hidden) {
+        nav_width = "0%"
+        main_width = "100%"
+    } else {
+        nav_width = "25%"
+        main_width = "75%"
+    }
 </script>
 
 <div>
-    <nav>
+    <nav style="--width:{nav_width};">
         {#each $nav_links as link}
             <a
                 href={link.url}
@@ -24,8 +39,8 @@
             </a>
         {/each}
     </nav>
-    <main>
-        <button>
+    <main style="--width:{main_width};">
+        <button on:click={toggle_navbar}>
             <span class="material-symbols-outlined">
                 menu
             </span>
@@ -46,7 +61,7 @@
         top: 0;
         bottom: 0;
         background-color: #3D625B;
-        width: 25%;
+        width: var(--width);
         overflow-y: auto;
         margin: 0;
         display: flex;
@@ -74,7 +89,7 @@
         right: 0;
         top: 0;
         bottom: 0;
-        width: 75%;
+        width: var(--width);
         display: block;
         background-color: #2A423E;
         overflow-y: auto;
