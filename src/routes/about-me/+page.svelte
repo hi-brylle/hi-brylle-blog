@@ -27,10 +27,17 @@
 
 <style>
     main {
-        padding: 3.5em 7em 3.5em 7em;
         color: #CED4E3;
     }
-
+    main {
+        padding: 3.5em 7em 3.5em 7em;
+    }
+    @media screen and (max-width: 768px) {
+        main {
+            padding: 1em 2em 1em 2em;
+        }
+    }
+    
     p {
         text-align: justify;
         text-justify: inter-word;
