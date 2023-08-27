@@ -78,6 +78,12 @@
         color: black;
     }
 
+    @media screen and (max-width: 768px) {
+        a {
+            font-size: x-small;
+        }
+    }
+
     @media (hover: hover) and (pointer: fine) {
         a:hover {
             color: #CED4E3;
