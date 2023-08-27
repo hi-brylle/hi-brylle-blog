@@ -78,8 +78,10 @@
         color: black;
     }
 
-    a:hover {
-        color: #CED4E3;
+    @media (hover: hover) and (pointer: fine) {
+        a:hover {
+            color: #CED4E3;
+        }
     }
 
     .selected {
@@ -129,5 +131,4 @@
             color: black;
         }
     }
-
 </style>
