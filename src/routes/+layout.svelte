@@ -2,7 +2,7 @@
     import { dev } from '$app/environment';
     import { inject } from '@vercel/analytics';
     import { page } from "$app/stores";
-    import { nav_links } from "$lib/link-store";
+    import { nav_links, navbar_hidden } from "$lib/link-store";
 
     inject({ mode: dev ? 'development' : 'production' });
 
@@ -13,14 +13,13 @@
         $nav_links = $nav_links
     }
 
-    let navbar_hidden = false
     let nav_width = "25%"
     let main_width = "75%"
     const toggle_navbar = () => {
-        navbar_hidden = !navbar_hidden
+        $navbar_hidden = !$navbar_hidden
     }
 
-    $: if (navbar_hidden) {
+    $: if ($navbar_hidden) {
         nav_width = "0%"
         main_width = "100%"
     } else {

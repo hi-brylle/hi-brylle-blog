@@ -1,5 +1,6 @@
 import { derived, writable, type Writable } from "svelte/store";
 
+export const navbar_hidden = writable(false)
 export const nav_links = writable([
     {url: "/about-this-blog", title: "What this blog is for", selected: false},
     {url: "/about-me", title: "About me", selected: false},
