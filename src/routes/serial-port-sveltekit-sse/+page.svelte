@@ -88,7 +88,7 @@
 
     <p>
         Originally, this functionality was implemented using WebSockets, but the WebSocket setup in SvelteKit is
-        <a href="https://github.com/sveltejs/kit/issues/1491" target="_blank">hacky</a>, and it also felt overkill
+        <a href="https://github.com/sveltejs/kit/issues/1491">hacky</a>, and it also felt overkill
         as the client didn't really need duplex communications with the backend.
     </p>
 
@@ -152,7 +152,7 @@
         An <code>EventSource</code> object must be constructed with the URL path argument set to the path of the SSE GET endpoint.
         This code resides in some <code>+page.svelte</code> file which means it shows UI. Whenever the user navigates into this page,
         the Arduino data ends up here. When they leave, the resources are cleaned up. The <code>onMount()</code> code handles all these cleanup
-        but its explanation is out of the scope of this entry so just look up its <a href="https://svelte.dev/docs/svelte#onmount" target="_blank">documentation</a>.
+        but its explanation is out of the scope of this entry so just look up its <a href="https://svelte.dev/docs/svelte#onmount">documentation</a>.
     </p>
     
     <h4>
@@ -160,11 +160,11 @@
     </h4>
 
     <ul>
-        <li><a href="https://serialport.io" target="_blank">Node SerialPort</a></li>
-        <li><a href="https://nodejs.org/api/stream.html" target="_blank">Node Stream Docs</a></li>
-        <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events" target="_blank">Server-Sent Events</a></li>
-        <li><a href="https://svelte.dev/docs/introduction" target="_blank">Svelte Docs</a></li>
-        <li><a href="https://kit.svelte.dev/docs/introduction" target="_blank">SvelteKit Docs</a></li>
+        <li><a href="https://serialport.io">Node SerialPort</a></li>
+        <li><a href="https://nodejs.org/api/stream.html">Node Stream Docs</a></li>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events">Server-Sent Events</a></li>
+        <li><a href="https://svelte.dev/docs/introduction">Svelte Docs</a></li>
+        <li><a href="https://kit.svelte.dev/docs/introduction">SvelteKit Docs</a></li>
     </ul>
 
 

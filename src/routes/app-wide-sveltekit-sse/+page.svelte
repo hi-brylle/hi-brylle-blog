@@ -17,7 +17,7 @@
 
     <p>
         The usage of a Node.js <code>PassThrough</code> Stream is the key to tying together
-        the pieces of the server-side push solution in this blog <a href="/serial-port-sveltekit-sse#solution" target="_blank">entry</a>.
+        the pieces of the server-side push solution in this blog <a href="/serial-port-sveltekit-sse#solution">entry</a>.
         This, however, still feels constrained by the fact that SSEs need to reside in a GET endpoint. A question logically follows:
         is it possible for disparate parts of the server to fire off messages intended for dispatch by
         the client side without the client sending a message first, i.e, trigger server-side pushes from anywhere?
@@ -88,7 +88,7 @@
     </p>
 
     <p>
-        Unlike the <a href="/serial-port-sveltekit-sse#objective" target="_blank">entry</a> last time where the SSE 
+        Unlike the <a href="/serial-port-sveltekit-sse#objective">entry</a> last time where the SSE 
         is busy sending data on short intervals, a more general, app-wide use of SSEs like this may lead to the SSE pushing 
         messages sparsely over time and may result to the disconnection of the client to the GET endpoint due to timeout.
         Prevent this by sending 'keep-alive' messages. This can simply be ":/n/n".
