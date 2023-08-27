@@ -16,15 +16,13 @@
 
 <div>
     <nav>
-        <aside>
-            {#each $nav_links as link}
-                <a
-                    href={link.url}
-                    class:selected={link.selected}>
-                    {link.title}
-                </a>
-            {/each}
-        </aside>
+        {#each $nav_links as link}
+            <a
+                href={link.url}
+                class:selected={link.selected}>
+                {link.title}
+            </a>
+        {/each}
     </nav>
     <main>
         <slot></slot>
@@ -45,22 +43,16 @@
         width: 25%;
         overflow-y: auto;
         margin: 0;
-        
-    }
-
-    aside {
         display: flex;
         flex-direction: column;
-        margin: 0.5em 1em;
     }
 
     a {
         text-decoration: none;
         font-weight: bold;
         overflow-wrap: normal;
-        margin: 0.5em;
+        padding: 0.5em;
         color: black;
-        
     }
 
     a:hover {
