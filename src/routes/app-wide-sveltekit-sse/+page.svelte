@@ -113,8 +113,7 @@
     }
 
     p {
-        text-align: justify;
-        text-justify: inter-word;
+        text-align: start;
     }
 
     a {

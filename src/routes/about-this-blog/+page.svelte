@@ -33,8 +33,7 @@
     }
 
     p {
-        text-align: justify;
-        text-justify: inter-word;
+        text-align: start;
     }
 
     @media screen and (max-width: 768px) {
