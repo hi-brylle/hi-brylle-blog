@@ -109,7 +109,7 @@
         The SerialPort library
     </h2>
 
-    <Snippet code={
+    <Snippet highlighted_lines={[18]} code={
     `
     // port.ts
 
