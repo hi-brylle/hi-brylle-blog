@@ -87,8 +87,8 @@
 
         return new Response(stream, {
             headers: {
-            "Content-Type": "text/event-stream",
-            "Connection": "keep-alive",
+                "Content-Type": "text/event-stream",
+                "Connection": "keep-alive",
             }
         })
     }) satisfies RequestHandler
@@ -110,12 +110,12 @@
     ...
 
     const app_wide_events_sse = new EventSource("/api/listen")
-    app_wide_events_sse.onmessage = (event: any) => {
-    const parsed_message = JSON.parse(event.data)
-    
-    // Handle all the many messages here.
-    
-    return () => { global_app_events_sse.close() }
+        app_wide_events_sse.onmessage = (event: any) => {
+        const parsed_message = JSON.parse(event.data)
+        
+        // Handle all the many messages here.
+        
+        return () => { global_app_events_sse.close() }
     }
 
     ...
