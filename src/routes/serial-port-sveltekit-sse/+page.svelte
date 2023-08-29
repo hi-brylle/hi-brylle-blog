@@ -36,12 +36,6 @@
         A Svelte and SvelteKit crash course
     </h2>
 
-    <Snippet code={
-    `
-    const add = (a: number, b: number) => a + b;
-    const sub = (a: number, b: number) => a - b;
-    `}/>
-
     <p>Feel free to skip to the next section if you are already familiar with Svelte and SvelteKit's project structure.</p>
 
     <p>
@@ -122,10 +116,36 @@
         The SerialPort library
     </h2>
 
-    <Gist
-        gist_url="https://gist.github.com/hi-brylle/920577f457ab44bf49cef4a8c248c236"
-        height={600}
-    />
+    <Snippet code={
+    `
+    // port.ts
+
+    import { SerialPort } from 'serialport'
+    import { ReadlineParser } from 'serialport'
+    import { PassThrough } from 'node:stream'
+
+    const port = new SerialPort({
+        path: "/dev/ttyACM_DEVICE0",
+        baudRate: 9600,
+        autoOpen: false
+    })
+
+    const parser = this.port.pipe(new ReadlineParser({
+        delimiter: "\\r\\n",
+        includeDelimiter: true
+    }))
+
+    export const stream = new PassThrough()
+
+    ...
+
+    this.parser.on("data", (data) => {
+        this.stream.write(data)
+    })
+
+    ...
+    `
+    }/>
 
     <p>
         The <code>port</code> object abstracts the connection to the port connected to a microcontroller.
@@ -139,10 +159,34 @@
         Server-Sent Event endpoint
     </h2>
 
-    <Gist
-        gist_url="https://gist.github.com/hi-brylle/77211881296559b79287842b4f855453"
-        height={580}
-    />
+    <Snippet code={
+    `
+    // +server.ts
+    // This file resides in /routes/api/sse-endpoint/
+
+    import port from "$lib/../../port"
+    import type { RequestHandler } from "@sveltejs/kit"
+
+    export const GET = (async ({ request }) => {
+        const stream = new ReadableStream({
+            start(controller) {
+                /** Initializations here */
+                port.stream.on("data", (data) => {
+                    controller.enqueue(\`data:\$\{data\}\\n\\n\`)
+                })
+            },
+            cancel() {
+                /** Cleanup here */
+            }
+        })
+        return new Response(stream, {
+            headers: {
+                "Content-Type": "text/event-stream",
+            }
+        })
+    }) satisfies RequestHandler
+    `
+    }/>
 
     <p>
         This is how standalone SSE endpoints are written in SvelteKit. It is a GET verb that returns a <code>Response</code> that must contain
@@ -156,10 +200,39 @@
         The client-side
     </h2>
 
-    <Gist
-        gist_url="https://gist.github.com/hi-brylle/161f05b58581688a8930f47fa5e16a52"
-        height={880}
-    />
+    <Snippet code={
+    `
+    // +page.svelte
+
+    <script lang=\"ts\">
+        const subscribe_to_realtime = () => {
+            const sse = new EventSource("/api/sse-endpoint")
+            sse.onmessage = (event: any) => {
+                    const payload = JSON.parse(event.data);
+                    /** Now do whatever with this payload */
+                }
+            }
+            return () => { sse.close() }
+        }
+
+        ...
+        
+        onMount(() => {
+            
+            ...
+
+            const unsub_on_leave = subscribe_to_realtime()
+            return unsub_on_leave
+        })
+    <\/script>
+
+    ...
+
+    html here
+
+    ...
+    `    
+    }/>
 
     <p>
         An <code>EventSource</code> object must be constructed with the URL path argument set to the path of the SSE GET endpoint.
