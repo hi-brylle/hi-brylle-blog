@@ -1,10 +1,8 @@
 <script>
     import { page } from "$app/stores";
     import { links } from "$lib/link-store";
-    import hljs from 'highlight.js/lib/core';
-    import typescript from 'highlight.js/lib/languages/typescript';
-    hljs.registerLanguage('typescript', typescript);
     import Gist from "$lib/components/Gist.svelte";
+    import Snippet from "$lib/components/Snippet.svelte";
 
     const title = $links.get($page.url.pathname)
     const date_written = "13 July 2023"
@@ -32,7 +30,7 @@
         A Svelte and SvelteKit crash course
     </h2>
 
-    {@html hljs.highlight("const shit = 2;", {language: "typescript"}).value}
+    <Snippet />
     
 
     <p>Feel free to skip to the next section if you are already familiar with Svelte and SvelteKit's project structure.</p>
