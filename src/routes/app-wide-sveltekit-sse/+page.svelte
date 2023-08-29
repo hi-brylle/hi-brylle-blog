@@ -1,7 +1,7 @@
 <script>
     import { page } from "$app/stores";
     import { links } from "$lib/link-store";
-    import Gist from "$lib/components/Gist.svelte";
+    import Snippet from "$lib/components/Snippet.svelte";
 
     const title = $links.get($page.url.pathname)
     const date_written = "28 July 2023"
@@ -35,10 +35,33 @@
         and write methods for writing into it, like in the following snippet.
     </p>
 
-    <Gist
-        gist_url="https://gist.github.com/hi-brylle/71fa6ec2239ad6b76aed3710da1fbb28"
-        height={550}
-    />
+    <Snippet code={
+    `
+    // message-sender.ts
+
+    import { PassThrough } from 'node:stream'
+
+    class MessageSender {
+        message_stream = new PassThrough()
+
+        domain_action_1 = () => {
+            const message = { ... }
+            this.message_stream.write(JSON.stringify(message))
+        }
+
+        domain_action_2 = () => {
+            const message = { ... }
+            this.message_stream.write(JSON.stringify(message))
+        }
+
+        ...
+
+    }
+
+    const message_sender = new MessageSender()
+    export default message_sender
+    `
+    }/>
 
     <p>
         The SSE GET endpoint is simple. Just import the <code>PassThrough</code> Stream object here and attach an 
@@ -46,10 +69,31 @@
         Don't forget the <code>data:</code> prefix and the two newlines.
     </p>
 
-    <Gist
-        gist_url="https://gist.github.com/hi-brylle/a622019e3fa28f5d4cf83c546390a0f9"
-        height={500}
-    />
+    <Snippet code={
+    `
+    // +server.ts
+
+    import message_sender from "$lib/../../message-sender"
+    import type { RequestHandler } from "@sveltejs/kit"
+
+    export const GET = (async ({ request }) => {
+        const stream = new ReadableStream({
+            start(controller) {
+                message_sender.message_stream.on("data", (data) => {
+                    controller.enqueue(\`data:\$\{data\}\\n\\n\`)
+                }
+            }
+        })
+
+        return new Response(stream, {
+            headers: {
+            "Content-Type": "text/event-stream",
+            "Connection": "keep-alive",
+            }
+        })
+    }) satisfies RequestHandler
+    `
+    }/>
 
     <p>
         The client-side solution asks if it's possible to listen to the SSE endpoint and
@@ -59,10 +103,24 @@
         as argument.
     </p>
 
-    <Gist
-        gist_url="https://gist.github.com/hi-brylle/35bb1036e13131358ec389cf4a49a7d3"
-        height={350}
-    />
+    <Snippet code={
+    `
+    // hooks.client.ts
+
+    ...
+
+    const app_wide_events_sse = new EventSource("/api/listen")
+    app_wide_events_sse.onmessage = (event: any) => {
+    const parsed_message = JSON.parse(event.data)
+    
+    // Handle all the many messages here.
+    
+    return () => { global_app_events_sse.close() }
+    }
+
+    ...
+    `    
+    }/>
 
     <p>
         The <code>hooks.client</code> file  is a special file in SvelteKit whose code,

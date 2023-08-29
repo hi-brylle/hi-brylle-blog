@@ -1,18 +1,11 @@
 <script>
     import { page } from "$app/stores";
     import { links } from "$lib/link-store";
-    import Gist from "$lib/components/Gist.svelte";
     import Snippet from "$lib/components/Snippet.svelte";
 
     const title = $links.get($page.url.pathname)
     const date_written = "13 July 2023"
     const read_time_est = "5-minute read"
-
-    const code1 =
-    `
-    const add = (a: number, b: number) => a + b;
-    const sub = (a: number, b: number) => a - b;
-    `;
 </script>
 
 <main>
