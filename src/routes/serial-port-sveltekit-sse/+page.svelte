@@ -7,6 +7,12 @@
     const title = $links.get($page.url.pathname)
     const date_written = "13 July 2023"
     const read_time_est = "5-minute read"
+
+    const code1 =
+    `
+    const add = (a: number, b: number) => a + b;
+    const sub = (a: number, b: number) => a - b;
+    `;
 </script>
 
 <main>
@@ -30,8 +36,11 @@
         A Svelte and SvelteKit crash course
     </h2>
 
-    <Snippet />
-    
+    <Snippet code={
+    `
+    const add = (a: number, b: number) => a + b;
+    const sub = (a: number, b: number) => a - b;
+    `}/>
 
     <p>Feel free to skip to the next section if you are already familiar with Svelte and SvelteKit's project structure.</p>
 
