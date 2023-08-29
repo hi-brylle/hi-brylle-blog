@@ -106,10 +106,9 @@
     }
 
     .topbar {
-        position: sticky;
+        position: fixed;
         top: 0;
         background-color: #2A423E;
-        width: 100%;
     }
 
     button {

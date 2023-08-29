@@ -152,7 +152,7 @@
         Server-Sent Event endpoint
     </h2>
 
-    <Snippet code={
+    <Snippet highlighted_lines={[11, 12, 13]} code={
     `
     // +server.ts
     // This file resides in /routes/api/sse-endpoint/
@@ -183,9 +183,9 @@
 
     <p>
         This is how standalone SSE endpoints are written in SvelteKit. It is a GET verb that returns a <code>Response</code> that must contain
-        some <code>ReadableStream</code> with content type set to <code>text/event-stream</code>. Lines 9 to 12 contain the crucial solution piece, 
+        some <code>ReadableStream</code> with content type set to <code>text/event-stream</code>. Line 12 contains the crucial solution piece, 
         which is the <code>stream</code> object exported from the port code. This is the part where what's written into it shall be read to be eventually sent to the client,
-        using the <code>.on("data", ...)</code> handler. Line 11 shows that it is mandatory in SSEs for the payload to be prefixed by
+        using the <code>.on("data", ...)</code> handler. Line 13 shows that it is mandatory in SSEs for the payload to be prefixed by
         <code>data:</code> and to be suffixed by two newlines.
     </p>
 
