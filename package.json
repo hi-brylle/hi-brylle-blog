@@ -22,6 +22,7 @@
 	"type": "module",
 	"dependencies": {
 		"@vercel/analytics": "^1.0.2",
+		"highlight.js": "^11.8.0",
 		"iframe-resizer": "^4.3.6"
 	}
 }
