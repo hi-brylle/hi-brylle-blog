@@ -122,7 +122,6 @@
         flex: 1;
         width: 100%;
         overflow-y: auto;
-        border: solid red 3px;
     }
 
     .material-symbols-outlined {
