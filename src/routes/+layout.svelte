@@ -104,7 +104,6 @@
         display: flex;
         flex-direction: column;
         background-color: #2A423E;
-        /* overflow-y: auto; */
         margin: 0 0 0 25%;
     }
 
