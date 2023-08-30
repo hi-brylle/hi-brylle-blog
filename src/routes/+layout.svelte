@@ -14,17 +14,17 @@
     }
 
     let nav_width = "25%"
-    let main_width = "75%"
+    let page_width = "75%"
     const toggle_navbar = () => {
         $navbar_hidden = !$navbar_hidden
     }
 
     $: if ($navbar_hidden) {
         nav_width = "0%"
-        main_width = "100%"
+        page_width = "100%"
     } else {
         nav_width = "25%"
-        main_width = "75%"
+        page_width = "75%"
     }
 </script>
 
@@ -38,7 +38,7 @@
             </a>
         {/each}
     </nav>
-    <main style="--width:{main_width};">
+    <main style="--width:{page_width};">
         <div class="topbar">
             <button on:click={toggle_navbar}>
                 <span class="material-symbols-outlined">
@@ -47,7 +47,9 @@
             </button>
         </div>
 
-        <slot></slot>
+        <div class="content">
+            <slot></slot>
+        </div>
     </main>
 </div>
 
@@ -99,21 +101,28 @@
         top: 0;
         bottom: 0;
         width: var(--width);
-        display: block;
+        display: flex;
+        flex-direction: column;
         background-color: #2A423E;
-        overflow-y: auto;
+        /* overflow-y: auto; */
         margin: 0 0 0 25%;
     }
 
     .topbar {
-        position: fixed;
-        top: 0;
+        width: 100%;
         background-color: #2A423E;
     }
 
     button {
         border: 0;
         background-color: #2A423E;
+    }
+
+    .content {
+        flex: 1;
+        width: 100%;
+        overflow-y: auto;
+        border: solid red 3px;
     }
 
     .material-symbols-outlined {
