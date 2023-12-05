@@ -7,23 +7,17 @@
         {#each $nav_links as link}
             <li>
             <h1>
-            <a
-                href={link.url}
-                class:selected={link.selected}>
-                {link.title}
-            </a>
+                <a href={link.url}>{link.title}</a>
             </h1>
+            {#if link.date_written != undefined}
+                <p>{link.date_written} &bull; {link.est_read_time}-minute read</p>
+            {/if}
             </li>
         {/each}
     </ul>
 </div>
 
 <style>
-
-    div {
-        height: 100vh;
-        background-color: #2A423E;
-    }
 
     ul {
         margin: 0;
@@ -47,5 +41,9 @@
 
     a:hover {
         color: black;
+    }
+
+    p {
+        color: #CED4E3;
     }
 </style>
