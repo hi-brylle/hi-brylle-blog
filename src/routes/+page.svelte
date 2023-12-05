@@ -1,9 +1,5 @@
 <script lang="ts">
-    import { goto } from "$app/navigation";
     import { nav_links } from "$lib/link-store";
-    import { onMount } from "svelte";
-
-    
 </script>
 
 <div>
@@ -26,7 +22,7 @@
 
     div {
         height: 100vh;
-        background-color: #3D625B;
+        background-color: #2A423E;
     }
 
     ul {

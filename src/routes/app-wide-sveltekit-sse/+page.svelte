@@ -159,6 +159,7 @@
 
 <style>
     main {
+        background-color: #2A423E;
         color: #CED4E3;
     }
     main {
