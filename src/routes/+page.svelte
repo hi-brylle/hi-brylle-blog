@@ -19,6 +19,8 @@
         </p>
     </aside>
 
+    <hr>
+
     <ul>
         {#each $nav_links as link}
             <li>
@@ -43,6 +45,10 @@
         padding: 0;
         margin: 0;
         color: #CED4E3;
+    }
+
+    hr {
+        margin: 0% 5%;
     }
 
     ul {
