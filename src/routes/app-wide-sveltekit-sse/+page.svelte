@@ -1,11 +1,9 @@
-<script>
+<script lang="ts">
     import { page } from "$app/stores";
     import { links } from "$lib/link-store";
     import Snippet from "$lib/components/Snippet.svelte";
 
-    const title = $links.get($page.url.pathname)
-    const date_written = "28 July 2023"
-    const read_time_est = "4-minute read"
+    const {title, date_written, est_read_time} = $links.get($page.url.pathname)??{}
 </script>
 
 <main>
@@ -13,7 +11,7 @@
         {title}
     </h1>
 
-    <p>{date_written} &bull; {read_time_est}</p>
+    <p>{date_written} &bull; {est_read_time}-minute read</p>
 
     <p>
         The usage of a Node.js <code>PassThrough</code> Stream is the key to tying together
