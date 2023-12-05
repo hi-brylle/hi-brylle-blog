@@ -19,7 +19,6 @@
         --highlighted-background="#2c3180"
         --padding-left=0
         --padding-right=0
-        
         />
 </Highlight>
 
