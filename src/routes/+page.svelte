@@ -13,7 +13,6 @@
             at the University of the Philippines Diliman. This blog is a sort of documentation for my thoughts on things.
             I write mostly about software architecture, domain-driven design, functional programming, compilers, lambda calculus, and type theory.
         </p>
-
         <p>
             Resume <a href="/resume.pdf" target="_blank">here</a>.
             Github <a href="https://github.com/hi-brylle" target="_blank">here</a>.
