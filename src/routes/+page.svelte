@@ -2,6 +2,9 @@
     import { nav_links } from "$lib/link-store";
     import { IconBrandGithub  } from '@tabler/icons-svelte';
     import { IconFileCertificate  } from '@tabler/icons-svelte';
+
+    let mouse_on_resume = false
+    let mouse_on_github = false
 </script>
 
 <div>
@@ -15,12 +18,17 @@
             at the University of the Philippines Diliman. This blog is a sort of documentation for my thoughts on things.
             I write mostly about software architecture, domain-driven design, functional programming, compilers, lambda calculus, and type theory.
         </p>
+        <!-- svelte-ignore a11y-mouse-events-have-key-events -->
         <p>
-            <a href="/resume.pdf" title="hire me" target="_blank">
-                <IconFileCertificate color={"#CED4E3"}/>
+            <a href="/resume.pdf" title="hire me" target="_blank"
+            on:mouseover={() => { mouse_on_resume = true }}
+            on:mouseout={() => { mouse_on_resume = false }}>
+                <IconFileCertificate color={mouse_on_resume ? "black" : "#CED4E3"}/>
             </a>
-            <a href="https://github.com/hi-brylle" title="see my projects" target="_blank">
-                <IconBrandGithub color={"#CED4E3"}/>
+            <a href="https://github.com/hi-brylle" title="see my projects" target="_blank"
+            on:mouseover={() => { mouse_on_github = true }}
+            on:mouseout={() => { mouse_on_github = false }}>
+                <IconBrandGithub color={mouse_on_github ? "black" : "#CED4E3"}/>
             </a>
         </p>
     </aside>
