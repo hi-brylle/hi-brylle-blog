@@ -1,5 +1,7 @@
 <script lang="ts">
     import { nav_links } from "$lib/link-store";
+    import { IconBrandGithub  } from '@tabler/icons-svelte';
+    import { IconFileCertificate  } from '@tabler/icons-svelte';
 </script>
 
 <div>
@@ -14,8 +16,12 @@
             I write mostly about software architecture, domain-driven design, functional programming, compilers, lambda calculus, and type theory.
         </p>
         <p>
-            Resume <a href="/resume.pdf" target="_blank">here</a>.
-            Github <a href="https://github.com/hi-brylle" target="_blank">here</a>.
+            <a href="/resume.pdf" title="hire me" target="_blank">
+                <IconFileCertificate color={"#CED4E3"}/>
+            </a>
+            <a href="https://github.com/hi-brylle" title="see my projects" target="_blank">
+                <IconBrandGithub color={"#CED4E3"}/>
+            </a>
         </p>
     </aside>
 
