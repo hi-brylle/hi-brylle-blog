@@ -41,9 +41,7 @@
             <h1>
                 <a href={link.url}>{link.title}</a>
             </h1>
-            {#if link.date_written != undefined}
-                <p>{link.date_written} &bull; {link.est_read_time}-minute read</p>
-            {/if}
+            <p>{link.date_written} &bull; {link.est_read_time}-minute read</p>
             </li>
         {/each}
     </ul>
