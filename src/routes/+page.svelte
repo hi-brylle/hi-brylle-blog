@@ -8,7 +8,6 @@
 </script>
 
 <div>
-
     <aside>
         <h2>
             Kumusta &#x1F44B
