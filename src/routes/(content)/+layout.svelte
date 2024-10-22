@@ -34,6 +34,11 @@
         margin: 0;
         color: #CED4E3;
     }
+    @media screen and (max-width: 768px) {
+        * {
+            font-size: small;
+        }
+    }
 
     hr {
         margin: 0% 5%;
