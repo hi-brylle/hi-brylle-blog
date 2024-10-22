@@ -35,7 +35,7 @@
         color: #CED4E3;
     }
     @media screen and (max-width: 768px) {
-        * {
+        h2 {
             font-size: small;
         }
     }
