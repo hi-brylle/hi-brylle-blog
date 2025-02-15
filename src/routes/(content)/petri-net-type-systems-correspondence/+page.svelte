@@ -13,7 +13,16 @@
     <p>{date_written} &bull; {est_read_time}-minute read</p>
 
     <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea enim porro a excepturi alias repellat, totam iste dolorem provident, illum error sint omnis ab assumenda possimus nulla minima, consequatur unde!
+        This is an exploration of correspondences I observed in my first introduction to a formal tool
+        called Petri nets (PNs) in a class I'm taking this semester and my (yet shallow) existing knowledge
+        of type systems. There will be a primer on both topics for the uninitiated. The ultimate goal
+        is to see if PNs can be encoded to programming language terms where the type checker can
+        determine if the resulting source code is sound, and by extension, the PN, too, seeing that
+        they're a formalization that requires soundness. A question arises: why not just use the
+        techniques native to the field of Petri nets for checking their soundness? The answer is
+        because this entry is actually related to a semester-long project in that class where we are
+        allowed the freedom to explore PNs in relation to our own interests, and my interests lie in 
+        programming languge theory and design (not to discount the entire field of PNs, of course).
     </p>
 
     <h2>
@@ -21,8 +30,19 @@
     </h2>
 
     <p>
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facilis, neque numquam, vel at qui id, sit quidem harum quod dolores asperiores. Natus molestiae quam veniam voluptates delectus repellat, ullam dolores!
+        A Petri net is a formal tool for analyzing business processes. A PN is a directed bipartite
+        graph whose nodes are either <em>places</em> (drawn as circles) or <em>transitions</em>
+        (drawn as rectangles). Since it's a bipartite graph, places can only go to transitions and
+        transitions can only go to places. There is a starting place that contains one or more
+        <em>tokens</em>. Tokens trigger the execution of the PN because transitions fire only when all
+        the places that point toward it (called <em>input places</em>) have at least one token each.
+        A transition fires by consuming tokens from its input places and produces tokens to all the
+        places that it points toward to (called <em>output places</em>) and if those places connect to
+        other transitions, they fire next. The execution ends when a token reaches a specially-marked
+        end place.
     </p>
+
+    <img src="/images/petri-net-type-systems/petri-nets-primer.png" alt="Petri nets primer">
 
     <h2>
         A primer on type systems
@@ -64,6 +84,13 @@
 
     a:hover {
         color: black;
+    }
+
+    img {
+        max-width: 50%;
+        height: auto; 
+        display: block;
+        margin: 0 auto;
     }
 
     @media screen and (max-width: 768px) {
