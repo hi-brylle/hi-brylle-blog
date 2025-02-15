@@ -38,8 +38,9 @@
         the places that point toward it (called <em>input places</em>) have at least one token each.
         A transition fires by consuming tokens from its input places and produces tokens to all the
         places that it points toward to (called <em>output places</em>) and if those places connect to
-        other transitions, they fire next. The execution ends when a token reaches a specially-marked
-        end place.
+        other transitions, they fire next. The execution ends when a token reaches a place that marks
+        the end of the process being modeled. For example, the Petri net below models the process for
+        handling insurance claims.
     </p>
 
     <img src="/images/petri-net-type-systems/petri-nets-primer.png" alt="Petri nets primer">
@@ -49,7 +50,13 @@
     </h2>
 
     <p>
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iusto amet tenetur accusantium delectus beatae maxime tempore a unde facilis fugit numquam adipisci reiciendis autem, iste non quod porro eos et.
+        Type systems are systems consisting of rules for how terms in a programming language such as
+        variables, values, function call results are assigned with something a called a <em>type</em>
+        which restricts what kind of operations can be applied to those terms. Type systems can be
+        informal but we'll be taking a quick look at formal type systems in this entry but I'll refer
+        to them simply as type systems for brevity.
+
+        Type systems are formalized using natural deduction notation like the following:
     </p>
 
     <h4>
