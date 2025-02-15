@@ -243,8 +243,6 @@
         <li><a href="https://svelte.dev/docs/introduction">Svelte Docs</a></li>
         <li><a href="https://kit.svelte.dev/docs/introduction">SvelteKit Docs</a></li>
     </ul>
-
-
 </main>
 
 <style>
