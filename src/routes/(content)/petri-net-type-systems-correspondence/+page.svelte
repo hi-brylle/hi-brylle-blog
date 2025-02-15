@@ -125,6 +125,29 @@
         sure to get into it as this project progresses).
     </p>
 
+    <h2>
+        Sound Petri net constructs
+    </h2>
+
+    <p>
+        A sound Petri net is a called <em>Workflow net</em> (WN). WNs are PNs with only one
+        <em>start</em> input place and only one <em>end</em> output place. WNs themselves can still
+        have errors, so for guaranteeing soundness, it has to fulfill three requirements. (1) For each
+        token at start, exactly one token must be produced at the end (implies a case eventually
+        completes). (2) If a token is produced at the end, all other places are empty (implies no
+        unfinished tasks). And finally (3), all transitions are able to fire starting from the initial
+        configuration (one token at start) (implies no redundant tasks that never fire).
+    </p>
+
+    <p>
+        This entry will talk about the constructive way of checking for soundness of nets. It's possible
+        to produce a sound net from basic building blocks that are themselves sound. This is taken form
+        the book of Kees Van Hee and Wil van der Aalst titled "Workflow Management: Models, Methods,
+        and Systems (Cooperative Information Systems)".
+    </p>
+
+    <img src="/images/petri-net-type-systems/sound-nets.png" alt="Sound nets">
+
     <h4>
         References:
     </h4>
