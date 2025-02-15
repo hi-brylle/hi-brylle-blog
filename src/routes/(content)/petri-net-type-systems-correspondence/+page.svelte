@@ -1,6 +1,7 @@
 <script lang="ts">
     import { page } from "$app/stores";
     import { links } from "$lib/link-store";
+    import Katex from 'svelte-katex'
 
     const {title, date_written, est_read_time} = $links.get($page.url.pathname)??{}
 </script>
@@ -57,6 +58,68 @@
         to them simply as type systems for brevity.
 
         Type systems are formalized using natural deduction notation like the following:
+    </p>
+
+    <Katex displayMode>\Gamma \vdash String \qquad \Gamma \vdash Number \over \Gamma \vdash String \to Number</Katex>
+
+    <p>
+        This is a type rule that says: "If type String and type Number are valid in some typing
+        environment, an arrow type from String to Number is valid". Arrow types are the types assigned
+        to functions, in this case, say, a function for computing the length of a string: it takes a
+        String parameter and outputs a Number result. A <em>typing environment</em> can be thought of
+        as an object containing key-value pairs of terms and their types in a scope. It is denoted by
+        <Katex>\Gamma</Katex> (gamma). The turnstile (<Katex>\vdash</Katex>) separates the assumptions
+        in the typing environment from the assertions to the right of it. Altogether, a statement of
+        the form <Katex>\Gamma \vdash \zeta</Katex> forms a <em>judgment</em>. In the judgment
+        <Katex>\empty \vdash true: Boolean</Katex>, the typing environment can be empty, and this is
+        read as "the term <em>true</em> has type <em>Boolean</em>" (it is assumed that the term
+        <em>true</em> is a built-in constant in the programming language and thus doesn't need a typing
+        environment).
+    </p>
+
+    <p>
+        Type rules can have zero or more judgments above the horizontal line (<em>premises</em>) and
+        only one judgment below (the <em>conclusion</em>). A type rule with no premises is an
+        <em>axiom</em>, like the following which says that an empty typing environment is valid:
+    </p>
+
+    <Katex displayMode> \over \empty \vdash \diamond</Katex>
+
+    <h2>
+        Analogs between Petri nets and programming languages
+    </h2>
+
+    <p>
+        A transition in a PN consumes tokens from its input places and produces tokens in its output
+        places. This corresponds to function calls in programming languages with the restriction that
+        the function must have at least one arity and it must have a result. This implies that the Unit
+        type (also known as the Void or Null type) cannot be a valid type if we are to encode PNs to a
+        programming language.
+    </p>
+
+    <p>
+        Tokens in a PN inhabit places during execution. Tokens can be thought of as terms in some 
+        programming language and places can have associated types mapped to them. Tokens don't
+        'move' during a PN's execution but are rather consumed and produced. We can then think of
+        a place as a variable that is assigned a value by the result of a function call (in PN terms:
+        after a firing has occurred).
+    </p>
+
+    <p>
+        PN transition semantics also imply that once a variable is consumed (in PL terms: supplied as
+        argument in a function call), it can no longer be used for other transitions. Terms can often
+        be reused in programming languages, e.g., a file descriptor being used for reading and writing
+        to a file multiple times, but there are programming languages such as Rust that only allow the
+        usage of a term at most once. 
+    </p>
+
+    <p>
+        In PNs, assuming it starts with just one token, a place may house a token at most once per
+        process because there might be cases where a transition doesn't produce a token at an output
+        place. This feature of PNs correspond to programming languages like Rust with something called
+        <em>affine type systems</em> that allow usage of terms at most once. (I have not looked deeply
+        into affine type systems as this realization just occurred to me while writing this but I'm
+        sure to get into it as this project progresses).
     </p>
 
     <h4>
