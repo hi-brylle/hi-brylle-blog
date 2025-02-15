@@ -140,13 +140,61 @@
     </p>
 
     <p>
-        This entry will talk about the constructive way of checking for soundness of nets. It's possible
-        to produce a sound net from basic building blocks that are themselves sound. This is taken form
-        the book of Kees Van Hee and Wil van der Aalst titled "Workflow Management: Models, Methods,
-        and Systems (Cooperative Information Systems)".
+        This entry will talk about the constructive way of checking for soundness of nets. It's
+        possible to produce a sound net from basic building blocks that are themselves sound. The
+        follwing is taken form the book of Kees Van Hee and Wil van der Aalst titled
+        "Workflow Management: Models, Methods, and Systems (Cooperative Information Systems)".
     </p>
 
     <img src="/images/petri-net-type-systems/sound-nets.png" alt="Sound nets">
+
+    <h2>
+        Sound net constructs as programming language features
+    </h2>
+
+    <p>
+        We now map these sound net constructs to their analog in programming languages. Some of these
+        are more involved than others so they are not presented in order as shown above. This is the
+        part that is largely based upon my observations when the class on Petri nets started. I shall
+        come back and revise this part when my knowledge of type systems get refined.
+    </p>
+
+    <p>
+        The basic building block is just a function. We can give it an arrow type <Katex>A \to B</Katex>
+        (input place has type <Katex>A</Katex> and output place has type <Katex>B</Katex>).
+    </p>
+
+    <p>
+        The sequence construct is function composition. If we consider transition x to be a function of
+        type <Katex>A \to B</Katex> and transition y to be a function of type <Katex>B \to C</Katex>,
+        then their function composition <Katex>y \circ x</Katex> has type <Katex>A \to C</Katex>. In
+        formal type theory notation:
+    </p>
+
+    <Katex displayMode>\Gamma \vdash x: A \to B \qquad \Gamma \vdash y: B \to C \over \Gamma \vdash y \circ x: A \to C</Katex>
+
+    <p>
+        The iteration construct are just two functions x and y that are inverses of each other.
+    </p>
+
+    <p>
+        The AND construct requires one AND-split transition and one AND-join transition. The AND-join
+        transition is the simpler to find correspondence in programming languages: it's just a function
+        with arity equal to the number of incoming arrows or input places. The AND-split transition can
+        be thought of as a function whose output must be compatible to whatever types the functions x
+        and y expect in the example. This is possible using a <em>pair type</em> denoted by
+        <Katex>A \times B</Katex>, assuming, for example, that function x expects an argument of type
+        <Katex>A</Katex> and function y expects an argument of type <Katex>B</Katex>. In the actual
+        function call, the value with type <Katex>A \times B</Katex> must be deconstructed to two values
+        having types <Katex>A</Katex> and <Katex>B</Katex>, respectively to match their respective
+        function's expected parameter types. The pair type can be generalized to a <em>tuple type</em>
+        <Katex>A_1 \times A_2 \times ... \times A_n</Katex> for cases where an AND-split points towards
+        more than two output places.
+    </p>
+
+    <p>
+        
+    </p>
 
     <h4>
         References:
