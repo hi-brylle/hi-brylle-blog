@@ -225,7 +225,7 @@
     </h2>
 
     <p>
-        Given a graphical representation of a PN, we do the following:
+        Given a workflow net, we do the following:
     </p>
 
     <p>
@@ -233,27 +233,42 @@
     </p>
 
     <p>
-        2. Infer the arrow types of the transitions based on the input places types and the kind of
+        2. Infer the arrow types of the transitions based on input places types and the kind of
         construct they are based on the observations.
     </p>
 
     <p>
-        3. Translate the annotated PN into source code of some statically type programming language
+        3. Translate the annotated PN into source code of some statically-typed programming language
         that allows for creation of new types. Places become variables. Transitions become function
-        calls. The idea is to see if the compiler's type checker complains, then we can conclude that
-        the PN is not sound. Due to this scheme being constructive, however, when the type checker
-        doesn't complain, it doesn't mean that the PN is free of flaws. This is similar to how type
-        checkers can guarantee the absence of type errors, but cannot guarantee absence of any other
-        kind of error in programming.
+        calls whose parameters are the variables.
     </p>
 
     <p>
-
+        The idea is to see if the compiler's type checker complains, then we can conclude that the net
+        is not sound. Due to this scheme being constructive, however, when the type checker doesn't
+        complain, it doesn't imply that the PN is free of flaws. This is similar to how type checkers
+        can guarantee the absence of type errors, but cannot guarantee absence of any other kind of
+        error in programming.
     </p>
+
+    <h2>
+        Example 1
+    </h2>
+
+    <img src="/images/petri-net-type-systems/situation-a.png" alt="Situation A">
 
     <p>
-        
+        After doing steps 1 and 2, we no longer need to do step 3 because the lack of soundness is
+        evident even just visually: task4 will never fire thus the place having type
+        <Katex>B</Katex> will never have a value, thus task2 will never fire because if translated
+        as a function, it has an arity of 2 but it will only get one value, which is from the place
+        having type <Katex>C</Katex> after task1 finishes firing.
     </p>
+
+    <h2>
+        Examp
+    </h2>
+
 
     <h4>
         References:
