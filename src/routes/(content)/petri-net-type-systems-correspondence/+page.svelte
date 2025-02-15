@@ -15,15 +15,16 @@
 
     <p>
         This is an exploration of correspondences I observed in my first introduction to a formal tool
-        called Petri nets (PNs) in a class I'm taking this semester and my (yet shallow) existing knowledge
-        of type systems. There will be a primer on both topics for the uninitiated. The ultimate goal
-        is to see if PNs can be encoded to programming language terms where the type checker can
-        determine if the resulting source code is sound, and by extension, the PN, too, seeing that
-        they're a formalization that requires soundness. A question arises: why not just use the
-        techniques native to the field of Petri nets for checking their soundness? The answer is
-        because this entry is actually related to a semester-long project in that class where we are
-        allowed the freedom to explore PNs in relation to our own interests, and my interests lie in 
-        programming languge theory and design (not to discount the entire field of PNs, of course).
+        called Petri nets (PNs) in a class I'm taking this semester and my (yet shallow) existing
+        knowledge on type systems. There will be a primer on both topics for the uninitiated. The
+        ultimate goal is to see if PNs can be encoded to programming language terms where the
+        type checker can determine if the resulting source code is sound, and by extension, the PN,
+        too, seeing that they're a formalization that requires soundness. A question arises:
+        why not just use the techniques native to the field of Petri nets for checking their
+        soundness? The answer is because this entry is actually related to a semester-long project
+        in that class where we are allowed the freedom to explore PNs in relation to our own interests,
+        and my interests lie in  programming languge theory and design (not to discount the entire
+        field of PNs, of course).
     </p>
 
     <h2>
@@ -130,7 +131,7 @@
     </h2>
 
     <p>
-        A sound Petri net is a called <em>Workflow net</em> (WN). WNs are PNs with only one
+        A sound Petri net is called a <em>Workflow net</em> (WN). WNs are PNs with only one
         <em>start</em> input place and only one <em>end</em> output place. WNs themselves can still
         have errors, so for guaranteeing soundness, it has to fulfill three requirements. (1) For each
         token at start, exactly one token must be produced at the end (implies a case eventually
@@ -141,9 +142,10 @@
 
     <p>
         This entry will talk about the constructive way of checking for soundness of nets. It's
-        possible to produce a sound net from basic building blocks that are themselves sound. The
-        follwing is taken form the book of Kees Van Hee and Wil van der Aalst titled
-        "Workflow Management: Models, Methods, and Systems (Cooperative Information Systems)".
+        possible to produce a sound net from basic building blocks that are themselves sound (but not
+        all sound nets can be conceived this way). The following is taken form the book of
+        Kees Van Hee and Wil van der Aalst titled "Workflow Management: Models, Methods, and Systems
+        (Cooperative Information Systems)".
     </p>
 
     <img src="/images/petri-net-type-systems/sound-nets.png" alt="Sound nets">
@@ -155,7 +157,7 @@
     <p>
         We now map these sound net constructs to their analog in programming languages. Some of these
         are more involved than others so they are not presented in order as shown above. This is the
-        part that is largely based upon my observations when the class on Petri nets started. I shall
+        part that is largely based upon my observations when my class on Petri nets started. I shall
         come back and revise this part when my knowledge of type systems get refined.
     </p>
 
@@ -182,14 +184,71 @@
         transition is the simpler to find correspondence in programming languages: it's just a function
         with arity equal to the number of incoming arrows or input places. The AND-split transition can
         be thought of as a function whose output must be compatible to whatever types the functions x
-        and y expect in the example. This is possible using a <em>pair type</em> denoted by
+        and y expect in the example. This is possible using a <em>product type</em> denoted by
         <Katex>A \times B</Katex>, assuming, for example, that function x expects an argument of type
         <Katex>A</Katex> and function y expects an argument of type <Katex>B</Katex>. In the actual
         function call, the value with type <Katex>A \times B</Katex> must be deconstructed to two values
-        having types <Katex>A</Katex> and <Katex>B</Katex>, respectively to match their respective
-        function's expected parameter types. The pair type can be generalized to a <em>tuple type</em>
-        <Katex>A_1 \times A_2 \times ... \times A_n</Katex> for cases where an AND-split points towards
-        more than two output places.
+        having types <Katex>A</Katex> and <Katex>B</Katex>, respectively, then one is chosen whose type
+        matches their respective function's expected parameter type. The product type can be
+        generalized to a <em>tuple type</em> <Katex>A_1 \times A_2 \times ... \times A_n</Katex> for
+        cases where an AND-split points towards more than two output places.
+    </p>
+
+    <p>
+        The OR-join transition in the explicit OR-join construct can be thought of as a function that
+        can take as argument any one of the types of its input places/functions. This calls for usage
+        of a <em>union type</em> denoted by <Katex>A | B</Katex>, assuming for example, that function x
+        produces a value of, say, type <Katex>A</Katex>, and that function y produces a value of type
+        <Katex>B</Katex>. The union type can be generalized to have more than two types it can possibly
+        have, denoted by <Katex>A_1 | A_2 | ... | A_n</Katex>.
+    </p>
+
+    <p>
+        The OR-split transition in the explicit OR-split construct represents XOR. In PN semantics,
+        which 'branch' is chosen is largely dependent upon the case being processed. To make this
+        behavior explicitly using types, we can set the OR-split function to produce a sum type
+        <Katex>A | B</Katex>, where, say, type <Katex>A</Katex> could be the input type of function x
+        and type <Katex>B</Katex> could be the input type of function y. This way, if the actual value
+        produced is of type <Katex>A</Katex>, the transition x fires exclusively, likewise, if the
+        actual value produced is of type <Katex>B</Katex>, the transition y fires exclusively.
+    </p>
+
+    <p>
+        The fuzziness of the semantics of the implicit OR-split construct is difficult to map in PL
+        terms. The book mentions a time-sensitive example where if a transition fails to do its thing
+        in time, the other transition may fire, making this choice construct simply OR (not XOR). For
+        now, it may be enough to just assign didtinct types to the places involved in this construct.
+    </p>
+
+    <h2>
+        A sketch of an algorithm
+    </h2>
+
+    <p>
+        Given a graphical representation of a PN, we do the following:
+    </p>
+
+    <p>
+        1. Assign distinct types on every place.
+    </p>
+
+    <p>
+        2. Infer the arrow types of the transitions based on the input places types and the kind of
+        construct they are based on the observations.
+    </p>
+
+    <p>
+        3. Translate the annotated PN into source code of some statically type programming language
+        that allows for creation of new types. Places become variables. Transitions become function
+        calls. The idea is to see if the compiler's type checker complains, then we can conclude that
+        the PN is not sound. Due to this scheme being constructive, however, when the type checker
+        doesn't complain, it doesn't mean that the PN is free of flaws. This is similar to how type
+        checkers can guarantee the absence of type errors, but cannot guarantee absence of any other
+        kind of error in programming.
+    </p>
+
+    <p>
+
     </p>
 
     <p>
