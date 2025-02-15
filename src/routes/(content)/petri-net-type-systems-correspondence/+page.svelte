@@ -52,7 +52,7 @@
 
     <p>
         Type systems are systems consisting of rules for how terms in a programming language such as
-        variables, values, function call results are assigned with something a called a <em>type</em>
+        variables, values, function call results are assigned with something a called a <em>type</em>,
         which restricts what kind of operations can be applied to those terms. Type systems can be
         informal but we'll be taking a quick look at formal type systems in this entry but I'll refer
         to them simply as type systems for brevity.
@@ -66,15 +66,18 @@
         This is a type rule that says: "If type String and type Number are valid in some typing
         environment, an arrow type from String to Number is valid". Arrow types are the types assigned
         to functions, in this case, say, a function for computing the length of a string: it takes a
-        String parameter and outputs a Number result. A <em>typing environment</em> can be thought of
-        as an object containing key-value pairs of terms and their types in a scope. It is denoted by
-        <Katex>\Gamma</Katex> (gamma). The turnstile (<Katex>\vdash</Katex>) separates the assumptions
-        in the typing environment from the assertions to the right of it. Altogether, a statement of
-        the form <Katex>\Gamma \vdash \zeta</Katex> forms a <em>judgment</em>. In the judgment
-        <Katex>\empty \vdash true: Boolean</Katex>, the typing environment can be empty, and this is
-        read as "the term <em>true</em> has type <em>Boolean</em>" (it is assumed that the term
-        <em>true</em> is a built-in constant in the programming language and thus doesn't need a typing
-        environment).
+        String parameter and outputs a Number result. 
+    </p>
+
+    <p>
+        A <em>typing environment</em> can be thought of as an object containing key-value pairs of
+        terms and their types in a scope. It is denoted by <Katex>\Gamma</Katex> (gamma). The turnstile
+        (<Katex>\vdash</Katex>) separates the assumptions in the typing environment from the assertions
+        to the right of it. Altogether, a statement of the form <Katex>\Gamma \vdash \zeta</Katex>
+        forms a <em>judgment</em>. In the judgment <Katex>\empty \vdash true: Boolean</Katex>, the
+        typing environment can be empty, and this is read as "the term <em>true</em> has type
+        <em>Boolean</em>" (it is assumed that the term <em>true</em> is a built-in constant in the
+        programming language and thus doesn't need a typing environment).
     </p>
 
     <p>
