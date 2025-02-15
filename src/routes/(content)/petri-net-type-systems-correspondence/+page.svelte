@@ -2,8 +2,11 @@
     import { page } from "$app/stores";
     import { links } from "$lib/link-store";
     import Katex from 'svelte-katex'
+    import Snippet from "$lib/components/Snippet.svelte";
 
     const {title, date_written, est_read_time} = $links.get($page.url.pathname)??{}
+
+    const situation_b_code_playground = "https://try.fsharp.org/#?code=C4TwDgpgBAglC8UDeBDAXFAzsATgSwDsBzAXwChRIoAhBZAIw232PMugGE6kBjJ3QqQrhoAEW4ATfiyFkA9HKgB1aAFdM0FFBwoCEgPYBbALREIBCDuD6cUa9ohgcEDQWDzFwABZ5MdlJgA1lhGEMB4hi5QTvoSqjyCNAA0HiGR4ZF+MXEJxFAcSVA20Tix8YmiZAA2Yf5BAIxQABToMACUUBgcXvp4PBAAPNSFBVCiAHwIZFAzUDXA2nmIAMog2BCGAHQASroGhk1tmwByEAAewE31hfUADLdt07N4AGaLRFADUADsAKx2XnM+R6fQg9QA8i8AMwMeAAIjh5FmUAgVQ0UFe70+UF+twBQO6vX6ACZITDePDEU8Zqj0YTQVCycgJJTyNVasAAoFic1GMMoHwOB0MOJ4NTmayyOyFtgUDhgAB9MBVFD9DBwRCoSXzOqBeoK5yYVRVYBdEH9IYjQoTOichpNWXypUq-qPaUovTO1UQEV0QwoYA8Ly6-WG40LADueG84uRAB9gUSwUz6FBjJM7dymvRHsj44nQaToQK0xmucSmjxc3mZgn6f1GcWJKWoBIgA&html=DwCwLgtgNgfAsAKAAQqaApgQwCb2ag4CdMTJcMABwFp0BHAVwEsA3AXgCIBhAewDsw6AdQAqAT0roOSAMb9BAzoIAeYAPThoAbhkhMAJwDOJNgzAAzagA4OeQhqy5EhAEY9sYu6mBq3HvD6asEA&css=Q"
 </script>
 
 <main>
@@ -221,7 +224,7 @@
     </p>
 
     <h2>
-        A sketch of an algorithm
+        A sketch of an encoding algorithm
     </h2>
 
     <p>
@@ -245,10 +248,10 @@
 
     <p>
         The idea is to see if the compiler's type checker complains, then we can conclude that the net
-        is not sound. Due to this scheme being constructive, however, when the type checker doesn't
-        complain, it doesn't imply that the PN is free of flaws. This is similar to how type checkers
-        can guarantee the absence of type errors, but cannot guarantee absence of any other kind of
-        error in programming.
+        is not sound. Due to this encoding scheme being constructive, however, when the type checker
+        doesn't complain, it doesn't imply that the PN is free of flaws. This is similar to how type
+        checkers can guarantee the absence of type errors, but cannot guarantee absence of any other
+        kind of error in programming.
     </p>
 
     <h2>
@@ -266,8 +269,52 @@
     </p>
 
     <h2>
-        Examp
+        Example 2
     </h2>
+
+    <img src="/images/petri-net-type-systems/situation-b.png" alt="Situation B">
+
+    <p>
+        Speaking strictly in terms of programming languages, function task1 produces one value of type
+        <Katex>B|C|D</Katex>, while a possible consumer of its result, function task2, requires two
+        paramaters separately of type <Katex>B</Katex> and type <Katex>C</Katex>. This clearly won't
+        type check; thus the encoded net is not sound.
+    </p>
+
+    <p>
+        A programming language I explored to demonstrate the type errors is F# because it is
+        statically-typed and has pattern matching for dealing with sum types. Here is the (failing)
+        <a href={situation_b_code_playground} target="_blank">code</a>:
+    </p>
+
+    <Snippet highlighted_lines={[22, 23]} code={
+        `
+        type A = {a: string}
+        type B = {b: string}
+        type C = {c: string}
+        type D = {d: string}
+
+        // We use a random-generator to represent
+        // this task sometimes producing B,
+        // sometimes producing C, or producing D
+        let task1 (a:A) : Choice<B, C, D> =
+            let rng = System.Random().Next(1, 100)
+            if rng < 75 then Choice1Of3 {b=""}
+            else if rng < 50 then Choice2Of3 {c=""}
+            else Choice3Of3 {d=""}
+
+        let task2 (b:B, c:C) : D =
+            {d=""}
+
+        let start_place: A = {a=""}
+        let task1_result: Choice<B, C, D> = task1(start_place)
+
+        let end_place: D = match task1_result with
+                | Choice1Of3 b -> task2(b) // Compiler complains there's only type B here, but we have no other value for type C.
+                | Choice2Of3 c -> task2(c) // Compiler complains there's only type C here, but we have no other value for type B.
+                | Choice3Of3 d -> d
+        `
+        }/>
 
 
     <h4>
