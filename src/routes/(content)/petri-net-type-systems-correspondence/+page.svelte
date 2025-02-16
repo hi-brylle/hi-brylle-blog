@@ -451,7 +451,8 @@
         statically-typed programming language and using its type checker to determine if function calls
         and variable assignments are valid. If they are valid, we mostly conclude that the encoded
         Petri net is valid (exception we found: livelock detection). If they are not valid, we are sure
-        that the encoded Petri net is not sound.
+        that the encoded Petri net is not sound. One good thing the scheme does is that it can verify
+        the validity of Petri nets that can't be constructed by the sound basic building blocks.
     </p>
 
     <h4>
