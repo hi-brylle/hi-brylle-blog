@@ -7,7 +7,7 @@
     const {title, date_written, est_read_time} = $links.get($page.url.pathname)??{}
 
     const situation_b_code_playground = "https://try.fsharp.org/#?code=C4TwDgpgBAglC8UDeBDAXFAzsATgSwDsBzAXwChRIoAhBZAIw232PMugGE6kBjJ3QqQrhoAEW4ATfiyFkA9HKgB1aAFdM0FFBwoCEgPYBbALREIBCDuD6cUa9ohgcEDQWDzFwABZ5MdlJgA1lhGEMB4hi5QTvoSqjyCNAA0HiGR4ZF+MXEJxFAcSVA20Tix8YmiZAA2Yf5BAIxQABToMACUUBgcXvp4PBAAPNSFBVCiAHwIZFAzUDXA2nmIAMog2BCGAHQASroGhk1tmwByEAAewE31hfUADLdt07N4AGaLRFADUADsAKx2XnM+R6fQg9QA8i8AMwMeAAIjh5FmUAgVQ0UFe70+UF+twBQO6vX6ACZITDePDEU8Zqj0YTQVCycgJJTyNVasAAoFic1GMMoHwOB0MOJ4NTmayyOyFtgUDhgAB9MBVFD9DBwRCoSXzOqBeoK5yYVRVYBdEH9IYjQoTOichpNWXypUq-qPaUovTO1UQEV0QwoYA8Ly6-WG40LADueG84uRAB9gUSwUz6FBjJM7dymvRHsj44nQaToQK0xmucSmjxc3mZgn6f1GcWJKWoBIgA&html=DwCwLgtgNgfAsAKAAQqaApgQwCb2ag4CdMTJcMABwFp0BHAVwEsA3AXgCIBhAewDsw6AdQAqAT0roOSAMb9BAzoIAeYAPThoAbhkhMAJwDOJNgzAAzagA4OeQhqy5EhAEY9sYu6mBq3HvD6asEA&css=Q"
-    const situation_c_code_playground = "https://try.fsharp.org/#?code=C4TwDgpgBAglC8UDeBDAXFAzsATgSwDsBzAXwChRIoAhBZAIw232PMugGE6kBjJ3QqQrhoAEW4ATfiyFkANhGBRgKTAGsAjFAAU6GAEooGWoiT14AIgvkFSleoBMOxtUMYupnpevzFy1WoAzDp8HG40UABUUOKI2mbeJAA0yBKJ+mS+StgoOMAA+mByKDwQGHCmKIlZUPSFxaXGdPaa2jl59SUQGbZQPJ2NUB7+jtp1RV0ZZAD001AAqgQ8APYAtqsQBHYAFniYUCgEEsrb0CurYHgKOH1rE4SYM3P0EDwoAK6Y0CDL732HBGWSlUmDwRAIyhENAAHuJgMsYgA6J5QXoSAZlGJ0EZBbT9CalKazIZrDZbE57KC-OwIr7QCA4HDLHCYZFojEYWJYI46FqBPEY-T6IA&html=DwCwLgtgNgfAsAKAAQqaApgQwCb2ag4CdMTJcMABwFp0BHAVwEsA3AXgCIBhAewDsw6AdQAqAT0roOSAMb9BAzoIAeYAPThoAbhkhMAJwDOJNgzAAzagA4OeQhqy5EhAEY9sYu6mBq3HvD6asEA&css=Q"
+    const situation_c_code_playground = "https://try.fsharp.org/#?code=C4TwDgpgBAglC8UDeBDAXFAzsATgSwDsBzAXwChRIoAhBZAIw232PMugGE6kBjJ3QqQrhoAEW4ATfiyFkANhGBRgKTAGsAjFAAU6GAEooGWoiT14AIgvkFSleoBMOxtUMYupnpevzFy1WoAzDp8HG40UABUUOKI2mbeJAA0yBKJ+mS+StgoOMAA+mByKDwQGHCmKIlZUPSFxaXGdPaa2jl59SUQGbZQPJ2NUB7+jtp1RV0ZZAD001AA6tASEDwA9gTMAK48wBASygAW0ABuKHKb0KsAZsoiNAAeojNz9CBQRIrAgofQmCvr+zWAFswOsIAQlIQJHgeChdhJnj9aps8HJgABaQhQADkmAIEmxUCumwIOzw62Uq3efnYMURAHcDjCDlAgXCeEdMEjadcoBIBhAavyJoNYlh8ToWoFtP0Rd19EA&html=DwCwLgtgNgfAsAKAAQqaApgQwCb2ag4CdMTJcMABwFp0BHAVwEsA3AXgCIBhAewDsw6AdQAqAT0roOSAMb9BAzoIAeYAPThoAbhkhMAJwDOJNgzAAzagA4OeQhqy5EhAEY9sYu6mBq3HvD6asEA&css=Q"
     const non_constructive_playground = "https://try.fsharp.org/#?code=C4TwDgpgBAglC8UDeBDAXFAzsATgSwDsBzAXwChRIoAhBZAIw232PMugGE6kBjJ3QqQrhoAEW4ATfiyHsoAUW4RpgtiKgAxbgDMVrYVQDi3IntnqAEtwAWZtVQCS3PHYPQAUtwBWruQGluAGtfdQAZbgAbEKoAWW4AW2joADluAlcyCIhgKBQAfWAAezz6AA8eKAAKdBgASigMWgAqKC5ESqR6eAAibpIAGl4evtrM7Kh6AuKJUuhKxmp6jHEWxXakCWGBpAgt0aycnim87VKiKr4OJc0oFuN17S3Boj2yMZyJY+sqqVFrq0QSGsW3eUAgxzwVWU8muTkBeBBByg2mOXiqug0108gK8iPGRGOgSqpkM1wCgMCINB1jyXmOESqtgs-SgPnc13CgIieJyeDygWO8SqLgcLOCfmucUB8R5UAieXixwIVSioRZiRi11SgIIVKR2BQOGAGDggJQssmYAiKB4yhodG02Cq+SKJXKlQNRtq+3GRytNrtbSwBAkzuOZR4HuAhuA3reSM+-ttywdTvmxxmEHTSYgcaR4JzGDWwdD6ddmez1ttefGKMLN0QjpylSOrtORBbeRzNZyBPr9xLF2O7c73dG1K7VbtAKgn1d1kqianPt5k4DGDhYIhlQLy9BdPr2ORqMqdb3SIF9fJUAJrsClT7e9B8vrnKgNLproilRpOZZB-PcZFXrKUoD5AVXXiSo+T-KBL0AnICDXZMoG1OUFSVSoXyndVkNzIA&html=DwCwLgtgNgfAsAKAAQqaApgQwCb2ag4CdMTJcMABwFp0BHAVwEsA3AXgCIBhAewDsw6AdQAqAT0roOSAMb9BAzoIAeYAPThoAbhkhMAJwDOJNgzAAzagA4OeQhqy5EhAEY9sYu6mBq3HvD6asEA&css=Q"
 </script>
 
@@ -318,7 +318,7 @@
         `
     }/>
 
-    <h2>
+    <h2 id="example_3">
         Example 3
     </h2>
 
@@ -326,13 +326,11 @@
 
     <p>
         In the book, this net is unsound because while task3 produces a token in the end place, it also
-        produces a token in the place with assigned type <Katex>B</Katex>, essentially never terminating.
-        This is a weakness of this scheme: you can write the code to show an error by simply trying to
-        assign the value of function task3 of type <Katex>B \times D</Katex> to the end place having
-        type <Katex>D</Katex> which doesn't match, or write the code that deconstructs the value of
-        task3 and only get the portion with the matching type <Katex>D</Katex>. Either way, it's not
-        how this could help in determining unsoundness of the encoded Petri net. You can play with the code
-        <a href={situation_c_code_playground} target="_blank">here</a>.
+        produces a token in the place with assigned type <Katex>B</Katex>, essentially never
+        terminating. We needed to deconstruct the value produced by task3 to get the value whose type
+        matches that of the end place. With this, the compiler doesn't complain but the scheme fails to
+        recognize the leftover tokens that induces a livelock: trapping a case in an endless cycle. The
+        code can be fiddled with <a href={situation_c_code_playground} target="_blank">here</a>.
     </p>
 
     <Snippet highlighted_lines={[]} code={
@@ -341,20 +339,19 @@
         type B = {b: string}
         type C = {c: string}
         type D = {d: string}
-    
+
         let task1 (a:A) : B = {b=""}
         let task2 (b:B) : C = {c=""}
         let task3 (c:C) : B * D = ({b=""}, {d=""})
-    
+
         let start_place: A = {a=""}
         let b_place: B = task1(start_place)
         let c_place: C = task2(b_place)
-    
-        // Uncomment this and the compiler complains
-        // because you cannot assign type BxD to D.
-        // let d_place: D =  task3(c_place)
-    
-        // Comment this out to see errors.
+
+        // We deconstructed the value of type BxD
+        // by getting the second component indicated
+        // the built-in 'snd' function to get type D
+        // which matches the type of d_place
         let d_place: D = snd (task3(c_place))
         `
     }/>
@@ -423,9 +420,39 @@
     }/>
 
     <p>
-        There's this technicality about deconstructing product types like
+        There's this technicality about deconstructing product types in the form of
+        <Katex>A \times B</Katex> where we need to get either the first component of type
+        <Katex>A</Katex> or the second component of type <Katex>B</Katex> to match the type we assigned
+        to a place. We can think of this as some kind of administrative action such that after the
+        AND-split produces two tokens, a resource in the system carries both information at some point 
+        in time, and it just knows where to give the one of type <Katex>A</Katex> to the appropriate
+        place and the same goes for the one of type <Katex>B</Katex> as well. 
     </p>
 
+    <p>
+        If we go with this explanation, then the livelock error in
+        <a href="/petri-net-type-systems-correspondence#example_3">Example 3</a> can be blamed upon
+        this administrative resource in the system not knowing when <em>not</em> to give information,
+        in this case, not to give information of type <Katex>B</Katex> back to the B place triggering
+        task2 again. This behavior is not a fault of the Petri net, but a limitation of this scheme.
+        Perhaps if the type system is modified to be affine, where objects can only be used once, this
+        behavior can be resolved, but that's beyond the scope of my knowledge for now. Even with
+        knowledge of affine type systems, if employed in this scheme, my initial hunch is that
+        iteration will break apart since no place can be reused.
+    </p>
+
+    <h2>
+        Conclusion
+    </h2>
+
+    <p>
+        Petri net constructs can be given analogs in terms of programming language and type system
+        features such as function calls and variable with type information. This can be used in a
+        scheme of encoding a Petri net into source code of some statically-typed programming language
+        and using its type checker to determine if function calls and variable assignments are valid.
+        If they are valid, we mostly conclude that the encoded Petri net is valid (exceptions we found:
+        livelock detection). If they are not valid, we are sure that the encoded Petri net is not sound.
+    </p>
 
     <h4>
         References:
