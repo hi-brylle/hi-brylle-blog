@@ -7,6 +7,7 @@
     const {title, date_written, est_read_time} = $links.get($page.url.pathname)??{}
 
     const situation_b_code_playground = "https://try.fsharp.org/#?code=C4TwDgpgBAglC8UDeBDAXFAzsATgSwDsBzAXwChRIoAhBZAIw232PMugGE6kBjJ3QqQrhoAEW4ATfiyFkA9HKgB1aAFdM0FFBwoCEgPYBbALREIBCDuD6cUa9ohgcEDQWDzFwABZ5MdlJgA1lhGEMB4hi5QTvoSqjyCNAA0HiGR4ZF+MXEJxFAcSVA20Tix8YmiZAA2Yf5BAIxQABToMACUUBgcXvp4PBAAPNSFBVCiAHwIZFAzUDXA2nmIAMog2BCGAHQASroGhk1tmwByEAAewE31hfUADLdt07N4AGaLRFADUADsAKx2XnM+R6fQg9QA8i8AMwMeAAIjh5FmUAgVQ0UFe70+UF+twBQO6vX6ACZITDePDEU8Zqj0YTQVCycgJJTyNVasAAoFic1GMMoHwOB0MOJ4NTmayyOyFtgUDhgAB9MBVFD9DBwRCoSXzOqBeoK5yYVRVYBdEH9IYjQoTOichpNWXypUq-qPaUovTO1UQEV0QwoYA8Ly6-WG40LADueG84uRAB9gUSwUz6FBjJM7dymvRHsj44nQaToQK0xmucSmjxc3mZgn6f1GcWJKWoBIgA&html=DwCwLgtgNgfAsAKAAQqaApgQwCb2ag4CdMTJcMABwFp0BHAVwEsA3AXgCIBhAewDsw6AdQAqAT0roOSAMb9BAzoIAeYAPThoAbhkhMAJwDOJNgzAAzagA4OeQhqy5EhAEY9sYu6mBq3HvD6asEA&css=Q"
+    const situation_c_code_playground = "https://try.fsharp.org/#?code=C4TwDgpgBAglC8UDeBDAXFAzsATgSwDsBzAXwChRIoAhBZAIw232PMugGE6kBjJ3QqQrhoAEW4ATfiyFkANhGBRgKTAGsAjFAAU6GAEooGWoiT14AIgvkFSleoBMOxtUMYupnpevzFy1WoAzDp8HG40UABUUOKI2mbeJAA0yBKJ+mS+StgoOMAA+mByKDwQGHCmKIlZUPSFxaXGdPaa2jl59SUQGbZQPJ2NUB7+jtp1RV0ZZAD001AAqgQ8APYAtqsQBHYAFniYUCgEEsrb0CurYHgKOH1rE4SYM3P0EDwoAK6Y0CDL732HBGWSlUmDwRAIyhENAAHuJgMsYgA6J5QXoSAZlGJ0EZBbT9CalKazIZrDZbE57KC-OwIr7QCA4HDLHCYZFojEYWJYI46FqBPEY-T6IA&html=DwCwLgtgNgfAsAKAAQqaApgQwCb2ag4CdMTJcMABwFp0BHAVwEsA3AXgCIBhAewDsw6AdQAqAT0roOSAMb9BAzoIAeYAPThoAbhkhMAJwDOJNgzAAzagA4OeQhqy5EhAEY9sYu6mBq3HvD6asEA&css=Q"
 </script>
 
 <main>
@@ -314,7 +315,49 @@
                 | Choice2Of3 c -> task2(c) // Compiler complains there's only type C here, but we have no other value for type B.
                 | Choice3Of3 d -> d
         `
-        }/>
+    }/>
+
+    <h2>
+        Example 3
+    </h2>
+
+    <img src="/images/petri-net-type-systems/situation-c.png" alt="Situation C">
+
+    <p>
+        In the book, this net is unsound because while task3 produces a token in the end place, it also
+        produces a token in the place with assigned type <Katex>B</Katex>, essentially never terminating.
+        This is a weakness of this scheme: you can write the code to show an error by simply trying to
+        assign the value of function task3 of type <Katex>B \times D</Katex> to the end place having
+        type <Katex>D</Katex> which doesn't match, or write the code that deconstructs the value of
+        task3 and only get the portion with the matching type <Katex>D</Katex>. Either way, it's not
+        how this could help in determining unsoundness of the encoded Petri net. You can play with the code
+        <a href={situation_c_code_playground} target="_blank">here</a>.
+    </p>
+
+    <Snippet highlighted_lines={[]} code={
+        `
+        type A = {a: string}
+        type B = {b: string}
+        type C = {c: string}
+        type D = {d: string}
+    
+        let task1 (a:A) : B = {b=""}
+        let task2 (b:B) : C = {c=""}
+        let task3 (c:C) : B * D = ({b=""}, {d=""})
+    
+        let start_place: A = {a=""}
+        let b_place: B = task1(start_place)
+        let c_place: C = task2(b_place)
+    
+        // Uncomment this and the compiler complains
+        // because you cannot assign type BxD to D.
+        // let d_place: D =  task3(c_place)
+    
+        // Comment this out to see errors.
+        let d_place: D = snd (task3(c_place))
+        `
+    }/>
+
 
 
     <h4>
