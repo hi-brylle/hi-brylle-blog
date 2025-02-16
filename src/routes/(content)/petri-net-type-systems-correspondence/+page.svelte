@@ -8,6 +8,7 @@
 
     const situation_b_code_playground = "https://try.fsharp.org/#?code=C4TwDgpgBAglC8UDeBDAXFAzsATgSwDsBzAXwChRIoAhBZAIw232PMugGE6kBjJ3QqQrhoAEW4ATfiyFkA9HKgB1aAFdM0FFBwoCEgPYBbALREIBCDuD6cUa9ohgcEDQWDzFwABZ5MdlJgA1lhGEMB4hi5QTvoSqjyCNAA0HiGR4ZF+MXEJxFAcSVA20Tix8YmiZAA2Yf5BAIxQABToMACUUBgcXvp4PBAAPNSFBVCiAHwIZFAzUDXA2nmIAMog2BCGAHQASroGhk1tmwByEAAewE31hfUADLdt07N4AGaLRFADUADsAKx2XnM+R6fQg9QA8i8AMwMeAAIjh5FmUAgVQ0UFe70+UF+twBQO6vX6ACZITDePDEU8Zqj0YTQVCycgJJTyNVasAAoFic1GMMoHwOB0MOJ4NTmayyOyFtgUDhgAB9MBVFD9DBwRCoSXzOqBeoK5yYVRVYBdEH9IYjQoTOichpNWXypUq-qPaUovTO1UQEV0QwoYA8Ly6-WG40LADueG84uRAB9gUSwUz6FBjJM7dymvRHsj44nQaToQK0xmucSmjxc3mZgn6f1GcWJKWoBIgA&html=DwCwLgtgNgfAsAKAAQqaApgQwCb2ag4CdMTJcMABwFp0BHAVwEsA3AXgCIBhAewDsw6AdQAqAT0roOSAMb9BAzoIAeYAPThoAbhkhMAJwDOJNgzAAzagA4OeQhqy5EhAEY9sYu6mBq3HvD6asEA&css=Q"
     const situation_c_code_playground = "https://try.fsharp.org/#?code=C4TwDgpgBAglC8UDeBDAXFAzsATgSwDsBzAXwChRIoAhBZAIw232PMugGE6kBjJ3QqQrhoAEW4ATfiyFkANhGBRgKTAGsAjFAAU6GAEooGWoiT14AIgvkFSleoBMOxtUMYupnpevzFy1WoAzDp8HG40UABUUOKI2mbeJAA0yBKJ+mS+StgoOMAA+mByKDwQGHCmKIlZUPSFxaXGdPaa2jl59SUQGbZQPJ2NUB7+jtp1RV0ZZAD001AAqgQ8APYAtqsQBHYAFniYUCgEEsrb0CurYHgKOH1rE4SYM3P0EDwoAK6Y0CDL732HBGWSlUmDwRAIyhENAAHuJgMsYgA6J5QXoSAZlGJ0EZBbT9CalKazIZrDZbE57KC-OwIr7QCA4HDLHCYZFojEYWJYI46FqBPEY-T6IA&html=DwCwLgtgNgfAsAKAAQqaApgQwCb2ag4CdMTJcMABwFp0BHAVwEsA3AXgCIBhAewDsw6AdQAqAT0roOSAMb9BAzoIAeYAPThoAbhkhMAJwDOJNgzAAzagA4OeQhqy5EhAEY9sYu6mBq3HvD6asEA&css=Q"
+    const non_constructive_playground = "https://try.fsharp.org/#?code=C4TwDgpgBAglC8UDeBDAXFAzsATgSwDsBzAXwChRIoAhBZAIw232PMugGE6kBjJ3QqQrhoAEW4ATfiyHsoAUW4RpgtiKgAxbgDMVrYVQDi3IntnqAEtwAWZtVQCS3PHYPQAUtwBWruQGluAGtfdQAZbgAbEKoAWW4AW2joADluAlcyCIhgKBQAfWAAezz6AA8eKAAKdBgASigMWgAqKC5ESqR6eAAibpIAGl4evtrM7Kh6AuKJUuhKxmp6jHEWxXakCWGBpAgt0aycnim87VKiKr4OJc0oFuN17S3Boj2yMZyJY+sqqVFrq0QSGsW3eUAgxzwVWU8muTkBeBBByg2mOXiqug0108gK8iPGRGOgSqpkM1wCgMCINB1jyXmOESqtgs-SgPnc13CgIieJyeDygWO8SqLgcLOCfmucUB8R5UAieXixwIVSioRZiRi11SgIIVKR2BQOGAGDggJQssmYAiKB4yhodG02Cq+SKJXKlQNRtq+3GRytNrtbSwBAkzuOZR4HuAhuA3reSM+-ttywdTvmxxmEHTSYgcaR4JzGDWwdD6ddmez1ttefGKMLN0QjpylSOrtORBbeRzNZyBPr9xLF2O7c73dG1K7VbtAKgn1d1kqianPt5k4DGDhYIhlQLy9BdPr2ORqMqdb3SIF9fJUAJrsClT7e9B8vrnKgNLproilRpOZZB-PcZFXrKUoD5AVXXiSo+T-KBL0AnICDXZMoG1OUFSVSoXyndVkNzIA&html=DwCwLgtgNgfAsAKAAQqaApgQwCb2ag4CdMTJcMABwFp0BHAVwEsA3AXgCIBhAewDsw6AdQAqAT0roOSAMb9BAzoIAeYAPThoAbhkhMAJwDOJNgzAAzagA4OeQhqy5EhAEY9sYu6mBq3HvD6asEA&css=Q"
 </script>
 
 <main>
@@ -358,6 +359,72 @@
         `
     }/>
 
+    <h2>
+        Example 4
+    </h2>
+
+    <img src="/images/petri-net-type-systems/non-constructive.png" alt="Non-constructive">
+
+    <p>
+        This is a safe net that the book says is not constructible from the basic build blocks of
+        smaller, yet sound constructs. With our scheme however, this can be verified to be sound.
+        Here is the <a href={non_constructive_playground} target="_blank">code</a> that doesn't result
+        to type errors:
+    </p>
+
+    <Snippet highlighted_lines={[]} code={
+        `
+        type A = {a: string}
+        type B = {b: string}
+        type C = {c: string}
+        type D = {d: string}
+        type E = {e: string}
+        type F = {f: string}
+        type G = {g: string}
+        type H = {h: string}
+        type I = {i: string}
+        type J = {j: string}
+        type K = {k: string}
+        type L = {l: string}
+        type M = {m: string}
+        type N = {n: string}
+    
+        let a_to_bxc (a:A) : B * C = ({b=""},{c=""})
+        let b_to_dxe (b:B) : D * E = ({d=""},{e=""})
+        let c_to_fxg (c:C) : F * G = ({f=""},{g=""})
+    
+        let d_to_h (d:D) : H = {h=""}
+        let e_to_i (e:E) : I = {i=""}
+        let f_to_j (f:F) : J = {j=""}
+        let g_to_k (g:G) : K = {k=""}
+    
+        let h_j_to_l (h:H, j:J) : L = {l=""}
+        let i_k_to_m (i:I, k:K) : M = {m=""}
+        let l_m_to_n (l:L, m:M) : N = {n=""}
+    
+        let start: A = {a=""}
+        let b_place: B = fst (a_to_bxc(start))
+        let c_place: C = snd (a_to_bxc(start))
+    
+        let d_place: D = fst (b_to_dxe(b_place))
+        let e_place: E = snd (b_to_dxe(b_place))
+        let f_place: F = fst (c_to_fxg(c_place))
+        let g_place: G = snd (c_to_fxg(c_place))
+    
+        let h_place: H = d_to_h(d_place)
+        let i_place: I = e_to_i(e_place)
+        let j_place: J = f_to_j(f_place)
+        let k_place: K = g_to_k(g_place)
+    
+        let l_place: L = h_j_to_l(h_place, j_place)
+        let m_place: M = i_k_to_m(i_place, k_place)
+        let n_place: N = l_m_to_n(l_place, m_place)
+        `
+    }/>
+
+    <p>
+        There's this technicality about deconstructing product types like
+    </p>
 
 
     <h4>
