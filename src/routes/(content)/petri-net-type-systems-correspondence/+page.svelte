@@ -215,7 +215,7 @@
     <p>
         The OR-split transition in the explicit OR-split construct represents XOR. In PN semantics,
         which 'branch' is chosen is largely dependent upon the case being processed. To make this
-        behavior explicitly using types, we can set the OR-split function to produce a sum type
+        behavior explicit using types, we can set the OR-split function to produce a sum type
         <Katex>A | B</Katex>, where, say, type <Katex>A</Katex> could be the input type of function x
         and type <Katex>B</Katex> could be the input type of function y. This way, if the actual value
         produced is of type <Katex>A</Katex>, the transition x fires exclusively, likewise, if the
@@ -367,7 +367,7 @@
     <img src="/images/petri-net-type-systems/non-constructive.png" alt="Non-constructive">
 
     <p>
-        This is a safe net that the book says is not constructible from the basic build blocks of
+        This is a safe net that the book says is not constructible from the basic building blocks of
         smaller, yet sound constructs. With our scheme however, this can be verified to be sound.
         Here is the <a href={non_constructive_playground} target="_blank">code</a> that doesn't result
         to type errors:
