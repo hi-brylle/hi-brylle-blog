@@ -149,8 +149,7 @@
         This entry will talk about the constructive way of checking for soundness of nets. It's
         possible to produce a sound net from basic building blocks that are themselves sound (but not
         all sound nets can be conceived this way). The following is taken form the book of
-        Kees Van Hee and Wil van der Aalst titled "Workflow Management: Models, Methods, and Systems
-        (Cooperative Information Systems)".
+        Kees Van Hee and Wil van der Aalst titled "Workflow Management: Models, Methods, and Systems".
     </p>
 
     <img src="/images/petri-net-type-systems/sound-nets.png" alt="Sound nets">
@@ -438,7 +437,7 @@
         Perhaps if the type system is modified to be affine, where objects can only be used once, this
         behavior can be resolved, but that's beyond the scope of my knowledge for now. Even with
         knowledge of affine type systems, if employed in this scheme, my initial hunch is that
-        iteration will break apart since no place can be reused.
+        iteration will break apart since no place can be used more than once.
     </p>
 
     <h2>
@@ -447,11 +446,12 @@
 
     <p>
         Petri net constructs can be given analogs in terms of programming language and type system
-        features such as function calls and variable with type information. This can be used in a
-        scheme of encoding a Petri net into source code of some statically-typed programming language
-        and using its type checker to determine if function calls and variable assignments are valid.
-        If they are valid, we mostly conclude that the encoded Petri net is valid (exceptions we found:
-        livelock detection). If they are not valid, we are sure that the encoded Petri net is not sound.
+        features such as function calls and variables with advanced type constructs such as sum and product
+        types. This can be used in a scheme of encoding a Petri net into source code of some
+        statically-typed programming language and using its type checker to determine if function calls
+        and variable assignments are valid. If they are valid, we mostly conclude that the encoded
+        Petri net is valid (exception we found: livelock detection). If they are not valid, we are sure
+        that the encoded Petri net is not sound.
     </p>
 
     <h4>
@@ -460,6 +460,7 @@
 
     <ul>
         <li><a href="http://lucacardelli.name/papers/typesystems.pdf">Type Systems</a></li>
+        <li>Van Der Aalst, W., & Van Hee, K. M. (2004). Workflow Management: Models, Methods, and Systems. MIT press.</li>
     </ul>
 </main>
 
