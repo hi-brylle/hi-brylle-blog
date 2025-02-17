@@ -4,12 +4,7 @@
     import Katex from 'svelte-katex'
     import Snippet from "$lib/components/Snippet.svelte";
 
-    // const {title, date_written, est_read_time} = $links.get($page.url.pathname)??{}
-    const {title, date_written, est_read_time} = { 
-        title: "Finding correspondences between Petri net constructs and type system features",
-        date_written: "15 February 2025",
-        est_read_time: 18
-    }
+    const {title, date_written, est_read_time} = $links.get($page.url.pathname)??{}
 
     const situation_b_code_playground = "https://try.fsharp.org/#?code=C4TwDgpgBAglC8UDeBDAXFAzsATgSwDsBzAXwChRIoAhBZAIw232PMugGE6kBjJ3QqQrhoAEW4ATfiyFkA9HKgB1aAFdM0FFBwoCEgPYBbALREIBCDuD6cUa9ohgcEDQWDzFwABZ5MdlJgA1lhGEMB4hi5QTvoSqjyCNAA0HiGR4ZF+MXEJxFAcSVA20Tix8YmiZAA2Yf5BAIxQABToMACUUBgcXvp4PBAAPNSFBVCiAHwIZFAzUDXA2nmIAMog2BCGAHQASroGhk1tmwByEAAewE31hfUADLdt07N4AGaLRFADUADsAKx2XnM+R6fQg9QA8i8AMwMeAAIjh5FmUAgVQ0UFe70+UF+twBQO6vX6ACZITDePDEU8Zqj0YTQVCycgJJTyNVasAAoFic1GMMoHwOB0MOJ4NTmayyOyFtgUDhgAB9MBVFD9DBwRCoSXzOqBeoK5yYVRVYBdEH9IYjQoTOichpNWXypUq-qPaUovTO1UQEV0QwoYA8Ly6-WG40LADueG84uRAB9gUSwUz6FBjJM7dymvRHsj44nQaToQK0xmucSmjxc3mZgn6f1GcWJKWoBIgA&html=DwCwLgtgNgfAsAKAAQqaApgQwCb2ag4CdMTJcMABwFp0BHAVwEsA3AXgCIBhAewDsw6AdQAqAT0roOSAMb9BAzoIAeYAPThoAbhkhMAJwDOJNgzAAzagA4OeQhqy5EhAEY9sYu6mBq3HvD6asEA&css=Q"
     const situation_c_code_playground = "https://try.fsharp.org/#?code=C4TwDgpgBAglC8UDeBDAXFAzsATgSwDsBzAXwChRIoAhBZAIw232PMugGE6kBjJ3QqQrhoAEW4ATfiyFkANhGBRgKTAGsAjFAAU6GAEooGWoiT14AIgvkFSleoBMOxtUMYupnpevzFy1WoAzDp8HG40UABUUOKI2mbeJAA0yBKJ+mS+StgoOMAA+mByKDwQGHCmKIlZUPSFxaXGdPaa2jl59SUQGbZQPJ2NUB7+jtp1RV0ZZAD001AA6tASEDwA9gTMAK48wBASygAW0ABuKHKb0KsAZsoiNAAeojNz9CBQRIrAgofQmCvr+zWAFswOsIAQlIQJHgeChdhJnj9aps8HJgABaQhQADkmAIEmxUCumwIOzw62Uq3efnYMURAHcDjCDlAgXCeEdMEjadcoBIBhAavyJoNYlh8ToWoFtP0Rd19EA&html=DwCwLgtgNgfAsAKAAQqaApgQwCb2ag4CdMTJcMABwFp0BHAVwEsA3AXgCIBhAewDsw6AdQAqAT0roOSAMb9BAzoIAeYAPThoAbhkhMAJwDOJNgzAAzagA4OeQhqy5EhAEY9sYu6mBq3HvD6asEA&css=Q"

@@ -3,7 +3,7 @@
     import { links } from "$lib/link-store";
     import Snippet from "$lib/components/Snippet.svelte";
 
-    const {title, date_written, est_read_time} = $links.get($page.url.pathname)??{}
+    let {title, date_written, est_read_time} = $links.get($page.url.pathname)??{}
 </script>
 
 <main>
