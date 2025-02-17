@@ -221,7 +221,7 @@
         The fuzziness of the semantics of the implicit OR-split construct is difficult to map in PL
         terms. The book mentions a time-sensitive example where if a transition fails to do its thing
         in time, the other transition may fire, making this choice construct simply OR (not XOR). For
-        now, it may be enough to just assign didtinct types to the places involved in this construct.
+        now, it may be enough to just assign distinct types to the places involved in this construct.
     </p>
 
     <h2>
@@ -348,7 +348,7 @@
         let c_place: C = task2(b_place)
 
         // We deconstructed the value of type BxD
-        // by getting the second component indicated
+        // by getting the second component indicated by
         // the built-in 'snd' function to get type D
         // which matches the type of d_place
         let d_place: D = snd (task3(c_place))
@@ -434,9 +434,9 @@
         this administrative resource in the system not knowing when <em>not</em> to give information,
         in this case, not to give information of type <Katex>B</Katex> back to the B place triggering
         task2 again. This behavior is not a fault of the Petri net, but a limitation of this scheme.
-        Perhaps if the type system is modified to be affine, where objects can only be used once, this
+        Perhaps if the type system is modified to be linear, where objects can only be used once, this
         behavior can be resolved, but that's beyond the scope of my knowledge for now. Even with
-        knowledge of affine type systems, if employed in this scheme, my initial hunch is that
+        knowledge of linear type systems, if employed in this scheme, my initial hunch is that
         iteration will break apart since no place can be used more than once.
     </p>
 
