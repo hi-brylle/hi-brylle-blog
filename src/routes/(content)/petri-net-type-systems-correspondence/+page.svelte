@@ -460,7 +460,7 @@
     </h4>
 
     <ul>
-        <li><a href="http://lucacardelli.name/papers/typesystems.pdf">Type Systems</a></li>
+        <li><a href="http://lucacardelli.name/papers/typesystems.pdf" target="_blank">Cardelli, Luca. “Type Systems.” ACM Computing Surveys, vol. 28, no. 1, Mar. 1996, pp. 263–64.</a></li>
         <li>Van Der Aalst, W., & Van Hee, K. M. (2004). Workflow Management: Models, Methods, and Systems. MIT press.</li>
     </ul>
 </main>
