@@ -1,13 +1,9 @@
 <script lang="ts">
-    import { page } from "$app/stores";
-    import { posts_metadata } from "$lib/link-store";
     import Snippet from "$lib/components/Snippet.svelte";
     
-    let title, date_written, est_read_time;
-    console.log(`current url: ${window.location.href}`)
-
-
-    $: ({title, date_written, est_read_time} = $posts_metadata.get($page.url.pathname)!!)
+    const title = "App-wide server-side push in SvelteKit using Server-Sent Events"
+    const date_written = "28 July 2023"
+    const est_read_time = 4
 </script>
 
 <main>
