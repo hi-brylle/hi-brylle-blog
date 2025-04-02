@@ -2,8 +2,12 @@
     import { page } from "$app/stores";
     import { posts_metadata } from "$lib/link-store";
     import Snippet from "$lib/components/Snippet.svelte";
+    
+    let title, date_written, est_read_time;
+    console.log(`current url: ${window.location.href}`)
 
-    let {title, date_written, est_read_time} = $posts_metadata.get($page.url.pathname)??{}
+
+    $: ({title, date_written, est_read_time} = $posts_metadata.get($page.url.pathname)!!)
 </script>
 
 <main>

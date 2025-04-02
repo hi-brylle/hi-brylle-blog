@@ -35,12 +35,12 @@
     <hr>
 
     <ul>
-        {#each $posts_metadata as link}
+        {#each [...$posts_metadata] as [url, metadata]}
             <li>
             <h1>
-                <a href={link.url}>{link.title}</a>
+                <a href={url}>{metadata.title}</a>
             </h1>
-            <p>{link.date_written} &bull; {link.est_read_time}-minute read</p>
+            <p>{metadata.date_written} &bull; {metadata.est_read_time}-minute read</p>
             </li>
         {/each}
     </ul>
