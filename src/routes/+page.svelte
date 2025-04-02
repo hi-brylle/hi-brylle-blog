@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { nav_links } from "$lib/link-store";
+    import { posts_metadata } from "$lib/link-store";
     import { IconBrandGithub  } from '@tabler/icons-svelte';
     import { IconFileCertificate  } from '@tabler/icons-svelte';
 
@@ -35,7 +35,7 @@
     <hr>
 
     <ul>
-        {#each $nav_links as link}
+        {#each $posts_metadata as link}
             <li>
             <h1>
                 <a href={link.url}>{link.title}</a>
