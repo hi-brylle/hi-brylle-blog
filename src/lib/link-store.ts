@@ -8,6 +8,10 @@ export const posts_metadata: Writable<{
     est_read_time: number;
 }[]> = writable([])
 
+export const posts_medata_derived: Writable<
+    Map<string, {title: string, date_written: string, est_read_time: number}>[]
+    > = writable([])
+
 export const links = derived(posts_metadata, (values: (typeof posts_metadata) extends Writable<infer T> ? T : never) => {    
     let map = new Map<string, {title: string, date_written: string, est_read_time: number}>()
     values.map((value: typeof values[number]) => {
