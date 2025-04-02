@@ -1,9 +1,9 @@
 <script lang="ts">
     import { page } from "$app/stores";
-    import { links } from "$lib/link-store";
+    import { posts_metadata } from "$lib/link-store";
     import Snippet from "$lib/components/Snippet.svelte";
 
-    let {title, date_written, est_read_time} = $links.get($page.url.pathname)??{}
+    let {title, date_written, est_read_time} = $posts_metadata.get($page.url.pathname)??{}
 </script>
 
 <main>
