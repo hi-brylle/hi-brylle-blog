@@ -14,8 +14,11 @@
         </h2>
         <p>
             Hi, my name is Brylle. I'm currently taking a Master's in Computer Science
-            at the University of the Philippines Diliman. This blog is a sort of documentation for my thoughts on things.
-            I write mostly about software architecture, domain-driven design, functional programming. (I wish to write soon about compilers, lambda calculus, and type theory).
+            at the University of the Philippines Diliman. This blog is a sort of documentation
+            for my thoughts on things. My research interest is in programming language theory 
+            but in here there are also entries about software architecture,
+            functional programming, domain-driven design, or really anything that interests 
+            me enough to write about them.
         </p>
         <!-- svelte-ignore a11y-mouse-events-have-key-events -->
         <p>
