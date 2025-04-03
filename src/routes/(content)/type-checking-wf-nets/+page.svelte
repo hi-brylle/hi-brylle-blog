@@ -49,6 +49,16 @@
     </p>
 
     <h2>
+        Syntax
+    </h2>
+
+    <Katex displayMode>\alpha ::= T \;|\; \alpha_1 + \alpha_2 \;|\; \alpha_1 \times \alpha_2 \qquad \text{"(types)"}</Katex>
+    <Katex displayMode>D ::= typedef\; T \;|\; fun\; F: \alpha \to \alpha' \qquad \text{"(declarations)"}</Katex>
+    <Katex displayMode>A ::= var\; I_s: T_s = val() \;|\; var\; I: T = F(O) \qquad \text{"(assignments)"}</Katex>
+    <Katex displayMode>O ::= I' \;|\; O_1 \times O_2 \qquad \text{"(objects)"}</Katex>
+    <Katex displayMode>C ::= C_1;C_2 \;|\; D \;|\; A \qquad \text{"(commands)"}</Katex>
+
+    <h2>
         Conclusion
     </h2>
 
