@@ -1,5 +1,11 @@
 [
     {
+        "url": "/type-checking-wf-nets/",
+        "title": "A type checking approach to workflow net soundness",
+        "date_written": "3 April 2025",
+        "est_read_time": -1
+    },
+    {
         "url": "/petri-net-type-systems-correspondence/",
         "title": "Finding correspondences between Petri net constructs and type system features",
         "date_written": "15 February 2025",
