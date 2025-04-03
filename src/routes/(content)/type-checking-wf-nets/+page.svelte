@@ -83,12 +83,49 @@
     </p>
 
     <p>
-        One thing that requires explanation, as it strays away from typical expectation of PL research
-        literature, is the syntax for non-initial assignments: given that functions can have product
-        or sum types as return types, why does the type of the variable <Katex>I</Katex> remain
-        atomic, indicated by <Katex>T</Katex>? Answering this segues the topic to those ad hoc rules
-        mentioned in the introduction, but as prelude, we want things to be simple: one atomic type
-        per place, and we type check function declarations and assignments instead.
+        One thing that requires explanation, as it strays away from typical expectation found in PL
+        research literature, is the syntax fragment for non-initial assignments: given that functions
+        can have product or sum types as return types, why does the type of the variable
+        <Katex>I</Katex> remain atomic (indicated by <Katex>T</Katex>)? Answering this segues the topic
+        to those ad hoc rules mentioned in the introduction, but as prelude, we want things to be
+        simple: one atomic type per place, and we type check function declarations and assignments
+        instead.
+    </p>
+
+    <h2>
+        Ad hoc type rules
+    </h2>
+
+    <p>
+        These ad hoc type rules follow the question: if a function that returns a product type assigns
+        its return value to a variable with an atomic type, how would it type check? In a normal
+        programming language, doing something like <code>var i: B = some_value_BxC;</code> is illegal
+        (assume that <code>some_value_BxC</code> has type <Katex>B \times C</Katex>), and for the
+        program to type check successfully, <code>some_value_BxC</code> has to be destructured first
+        to get the component of the correct intended type. In our language, we will forgo this
+        destructuring to reduce clutter in the code and in the syntax design. There's also no need to
+        infer which destructuring helper function (a.k.a. <em>projection function</em>) to use just to
+        match the type of the variable (also, inference of such kind increases the complexity of this
+        project). We can justify this decision by looking at the workflow net: when an AND-split
+        transition fires, it produces two tokens and it <em>just knows</em> which place to put each in. This is
+        done by arrows in a workflow net, and we can take advantage of this by re-interpreting arrows
+        coming out of AND-splits as projection functions that know which component to get for
+        assignment with the correct type.
+    </p>
+
+    <h3>
+        Simplifying product types
+    </h3>
+
+    <p>
+        We allow assignments of the form <Katex>var\; ident: T = function(obj)</Katex> where
+        <Katex>function(obj)</Katex> returns a value of type
+        <Katex>T_1 \times T_2 \times ... \times T_n</Katex> as long as <Katex>T</Katex> belongs to the
+        set <Katex>\lbrace T_i | 1 \leq i \leq n \rbrace</Katex>. As for function calls, we use
+        <Katex>\times</Katex> to make products out of multiple variables having the correct types
+        that the function expects. For example, given <Katex>fun\; f: A \times B \to C</Katex> and
+        variables <Katex>var\; a: A</Katex>, <Katex>var\; b: B</Katex>, <Katex>var\; c: C</Katex>,
+        a valid function call (and assignment) is <Katex>var\; c: C = f(a \times b)</Katex>.
     </p>
 
     <h2>
