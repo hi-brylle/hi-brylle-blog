@@ -4,7 +4,7 @@
 
     const title = "A type checking approach to workflow net soundness"
     const date_written = "3 April 2025"
-    const est_read_time = -1
+    const est_read_time = 10
 </script>
 
 <main>
