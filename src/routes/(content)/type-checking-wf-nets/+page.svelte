@@ -222,7 +222,18 @@
     </h2>
 
     <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. At omnis aliquam, totam doloremque dicta dolores debitis consequuntur tempore illo aspernatur sequi vitae, cum accusamus accusantium. Odit similique veritatis animi deleniti.
+        In the effort of making a simple, custom language for encoding workflow nets for soundness
+        check, we learned that OR- constructs cause most of the pain and complexity. Now we know
+        that soundness in this scheme is two-fold: workflow nets encoded as source code in this custom
+        language must pass both the type check and the tautology check to be considered sound.
+    </p>
+
+    <p>
+        The next entry would focus on the full type system and an encoding algorithm that takes in
+        some representation of  the input workflow net and produces code in the language introduced in
+        this entry. A soundness theorem for the type system itself also needs to be proven and for
+        that, a semantics of the language has to be specified as prerequisite. As usual, this semantics
+        will be based largely on workflow new semantics.
     </p>
 
     <h4>
