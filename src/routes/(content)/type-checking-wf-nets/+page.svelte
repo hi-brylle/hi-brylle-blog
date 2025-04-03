@@ -58,6 +58,39 @@
     <Katex displayMode>O ::= I' \;|\; O_1 \times O_2 \qquad \text{"(objects)"}</Katex>
     <Katex displayMode>C ::= C_1;C_2 \;|\; D \;|\; A \qquad \text{"(commands)"}</Katex>
 
+    <p>
+        <Katex>T</Katex> represents atomic types. <Katex>I</Katex> and <Katex>F</Katex> are variable
+        and function identifiers, respectively. There is a special initial assignment
+        <Katex>var\; I_s: T_s = val()</Katex> that corresponds to the starting place. Non-initial
+        assignments have a function call on the RHS that allows for either one variable
+        <Katex>I'</Katex> as argument, or a product construction of multiple objects
+        <Katex>O_1 \times O_2 \times ... \times O_n</Katex>. This simplifies the type system by
+        making all functions technically unary, and by making products out of multiple variables,
+        an n-ary function can be emulated. Commands are either declarations or assignments.
+        Declarations are either atomic type (symbol is just a string) or function declarations.
+    </p>
+
+    <p>
+        Notice that some worklow net basics are not enforced by this abstract syntax. Looking at
+        <Katex>\text{"(commands)"}</Katex>, a valid program can consist only of declarations, i.e.,
+        places and transitions only, <em>no</em> arrows, or only of assignments, i.e., no places nor
+        transitions, <em>only</em> arrows. We won't add more to the syntax just to enforce this
+        because we assume that the workflow net to be encoded gets its basics right. Also, notice that
+        types can take on mixed forms, e.g., <Katex>(A \times B) + C</Katex>. Again, we won't bother
+        with modifying the syntax to enforce the segragation of product and sum types because input
+        workflow nets naturally won't have such mixed types, that is, there is no transition whose
+        left side, for example, contains both an AND-join and an OR-join.
+    </p>
+
+    <p>
+        One thing that requires explanation, as it strays away from typical expectation of PL research
+        literature, is the syntax for non-initial assignments: given that functions can have product
+        or sum types as return types, why does the type of the variable <Katex>I</Katex> remain
+        atomic, indicated by <Katex>T</Katex>? Answering this segues the topic to those ad hoc rules
+        mentioned in the introduction, but as prelude, we want things to be simple: one atomic type
+        per place, and we type check function declarations and assignments instead.
+    </p>
+
     <h2>
         Conclusion
     </h2>
