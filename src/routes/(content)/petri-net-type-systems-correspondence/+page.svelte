@@ -153,7 +153,7 @@
 
     <img src="/images/petri-net-type-systems/sound-nets.png" alt="Sound nets">
 
-    <h2>
+    <h2 id="analog">
         Sound net constructs as programming language features
     </h2>
 

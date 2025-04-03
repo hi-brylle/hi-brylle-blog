@@ -15,7 +15,37 @@
     <p>{date_written} &bull; {est_read_time}-minute read</p>
 
     <p>
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Beatae eveniet natus temporibus, earum facilis dolorum id, adipisci inventore fugiat veniam numquam vero quos possimus repudiandae provident! Nam, minus? Eligendi, reiciendis!
+        In the last <a href="/petri-net-type-systems-correspondence#analog">entry</a>, we observe that
+        basic building blocks of sound workflow nets can be given programming language analogs. A rough
+        sketch of an algorithm was made that encodes workflow nets into some programming language
+        source code, and in essence, code that fails to type check implies that the encoded net is
+        unsound. The problem with the initial approach is that, although it is intuitive, it isn't
+        rigorous. The language choice felt arbitrary, and making the source code type check as
+        successfully as possible required destructuring of values with product or sum types. All these
+        are based on experience: when you see a value that is of some sum type, you immediately
+        pattern-match it to do work on the extracted value. We aren't interested in working with values,
+        however, we only need to check the validity of types and assignments. I made a class 
+        presentation on the initial approach and it contained the following slide:
+    </p>
+
+    <img src="/images/type-checking-wf-nets/needs-formalization.png" alt="Rule that needs formalization">
+
+    <p>
+        It's obvious that this workflow net is unsound due to the deadlock behavior caused by a binary
+        function expecting two values of types that belong to the same sum type, but of course, only
+        one value of one of the types can actually exist, making the binary function uncallable. This
+        entry focuses on how rules such as this can be formalized, and others.
+    </p>
+
+    <p>
+        Given the possible existence and adherence to ad hoc rules, we ditch the choice of some real
+        programming language and design our own. This language will be imperative, simply-typed, and
+        first-order. It is imperative so it can model arrows in workflow nets as assignments. It is
+        simply-typed because there is no need for parametrized types. It is first-order because there's
+        no need to have higher-order functions since workflow nets don't have a notion of 
+        'transitions that are arguments or results to and from other transitions'. We will be
+        specifying syntax and type rules in this entry. The semantics can come in later as requirement
+        for the soundness theorem.
     </p>
 
     <h2>
