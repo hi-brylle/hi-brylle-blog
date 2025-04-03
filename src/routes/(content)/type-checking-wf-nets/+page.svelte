@@ -59,11 +59,11 @@
 
     <p>
         <Katex>T</Katex> represents atomic types. <Katex>I</Katex> and <Katex>F</Katex> are variable
-        and function identifiers, respectively. Apostrophes indicate that the same non-terminal must
-        actually have different symbols in the concrete syntax. There is a special initial assignment
-        <Katex>var\; I_s: T_s = val()</Katex> that corresponds to the starting place. Non-initial
-        assignments have a function call on the RHS that allows for either one variable
-        <Katex>I'</Katex> as argument, or a product construction of multiple objects
+        and function identifiers, respectively. Apostrophes indicate that two or more similar
+        non-terminals must actually have different symbols in the concrete syntax. There is a special
+        initial assignment <Katex>var\; I_s: T_s = val()</Katex> that corresponds to the starting
+        place. Non-initial assignments have a function call on the RHS that allows for either one
+        variable <Katex>I'</Katex> as argument, or a product construction of multiple objects
         <Katex>O_1 \times O_2 \times ... \times O_n</Katex>. This simplifies the type system by
         making all functions technically unary, and by making products out of multiple variables,
         an n-ary function can be emulated. Commands are either declarations or assignments.
