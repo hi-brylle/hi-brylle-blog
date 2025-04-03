@@ -44,8 +44,7 @@
         simply-typed because there is no need for parametrized types. It is first-order because there's
         no need to have higher-order functions since workflow nets don't have a notion of 
         'transitions that are arguments or results to and from other transitions'. We will be
-        specifying syntax and type rules in this entry. The semantics can come in later as requirement
-        for the soundness theorem.
+        specifying syntax and some core type rules in this entry.
     </p>
 
     <h2>
