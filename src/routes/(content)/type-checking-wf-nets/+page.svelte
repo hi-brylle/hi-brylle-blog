@@ -167,7 +167,7 @@
 
     <p>
         This rule, however, is not enough. Consider the image below, with the highlighted function
-        of type <Katex>E \times F \to I</Katex>. According to the rule, this is function is valid
+        of type <Katex>E \times F \to I</Katex>. According to the rule, this function is valid
         because types <Katex>E</Katex> and <Katex>F</Katex> belong to two different sum types
         <Katex>D + E</Katex> and <Katex>F + G</Katex>, respectively; however, the workflow net has
         a deadlock on places H, I, and J. No configuration of tokens in places D, E, F, and G can 
