@@ -128,6 +128,95 @@
         a valid function call (and assignment) is <Katex>var\; c: C = f(a \times b)</Katex>.
     </p>
 
+    <h3>
+        Simplifying sum types
+    </h3>
+
+    <p>
+        Sum types are tricky to formalize in this project, much less simplify. The approach I present
+        is the ninth idea I have tried thinking over for the past two weeks. We return to the slide
+        that belonged in a presentation I held in class:
+    </p>
+
+    <img src="/images/type-checking-wf-nets/needs-formalization.png" alt="Rule that needs formalization">
+
+    <p>
+        There were several questions I asked myself here. How to restrict usage of a value whose type
+        is a member of some sum type? Maybe incorporate substructural rules in the type system, making
+        values affine (values can be used at most once)? This is already hard enough considering the
+        research, learning and mastery needed, but the standard meaning of "affine" gets lost as well:
+        it's not enough to restrict reuse of a value, but once a value of a certain type is used,
+        other values, whose type belongs to a sum type that certain type belongs to, are forbidden from
+        use, even if they have never been used before. This is some weird notion of affinity. What if
+        we just do good ol' pattern matching? This is a worse nightmare because then now the syntax
+        also has to deal with local scopes. Imagine a input workflow net with lots of OR- constructs:
+        its encoding would have lots of nested scpoe. The problem with nested scpoe is that, eventually,
+        a variable has to be used elsewhere, so the one-and-only global scope of the syntax has to be
+        preserved.
+    </p>
+
+    <p>
+        Eventually, I settled with adding a specific rule to the type system: only at most one atomic
+        type member of a sum type can appear as input type per function. For example, if there exists
+        a return type of <Katex>B + C</Katex> in some function, another function with input type
+        signature of <Katex>B \times C</Katex> must fail the type check. This is the case for
+        Situation B in the image above. Another example: if there exists a function with input type
+        signature of <Katex>E \times F</Katex> and types <Katex>E</Katex> and <Katex>F</Katex> 
+        belong to two different sum types, there is no problem.
+    </p>
+
+    <p>
+        This rule, however, is not enough. Consider the image below, with the highlighted function
+        of type <Katex>E \times F \to I</Katex>. According to the rule, this is function is valid
+        because types <Katex>E</Katex> and <Katex>F</Katex> belong to two different sum types
+        <Katex>D + E</Katex> and <Katex>F + G</Katex>, respectively; however, the workflow net has
+        a deadlock on places H, I, and J. No configuration of tokens in places D, E, F, and G can 
+        produce a token each in H, I, and J.
+    </p>
+
+    <img src="/images/type-checking-wf-nets/counterexample.png" alt="Counterexample to the rule">
+
+    <p>
+        A different kind of check is needed here. Taking inspiration from workflow net semantics again:
+        what does it mean when a place may or may not have a token in it? Can this be modeled somehow
+        by type system ideas? The answer is yes, via nullable types. This can be made separate from the
+        syntax of the language, but for places that are pointed to by OR-splits, their type can be
+        interpreted as nullable, denoted by <Katex>T?</Katex>. More importantly, input types that are
+        nullable are also "infectious", that is, functions with nullable input types must have nullable
+        output types, too. Consider a unary transition: if it's possible that no token gets produced
+        in its only input place, then it's easy to see that it may not produce a token to its
+        only output place either. This can be generalized to transitions with AND- and OR-joins in
+        their input sides.
+    </p>
+
+    <p>
+        Once nullable type annotations are propagated, another encoding can now be done that produces
+        Boolean formulas. Places with nullable types become atomic propositions; transitions become
+        logical connectives AND, OR, and XOR (for places whose types belong to the same sum type, as
+        there can only be one value allowed at a time among them). The idea of soundness now, on top
+        of a successful type checking, is to also see if all Boolean assignments result to a
+        tautology for the encoded Boolean formula. Conversely, if there is at least one Boolean
+        assignment that results to false, we conclude that the encoded workflow net is unsound (even
+        if the type check succeeds).
+    </p>
+
+    <img src="/images/type-checking-wf-nets/counterexample-nullable.png" alt="Counterexample to the rule - nullable">
+
+    <p>
+        Let's walk through the counterexample above annotated with nullable types now.
+    </p>
+    <p>K = H AND I AND J</p>
+    <p>K = D AND (E AND F) AND G</p>
+    <p>K = D AND E AND F AND G</p>
+    <p>
+        Remember that <Katex>D \oplus E</Katex> and <Katex>F \oplus G</Katex> by virtue of the
+        OR-splits that produce them. Setting D and G to be true to set H and J to be true,
+        respectively, makes E and F both false. Looking at the simplified formula for K above makes
+        it evident that this formula will never be a tautology because of the XOR relationships. Even
+        though the type check succeeds, this complementary check proves that this workflow net is
+        unsound due to deadlock behavior.
+    </p>
+
     <h2>
         Conclusion
     </h2>
